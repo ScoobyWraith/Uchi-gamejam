@@ -41,6 +41,6 @@ public class IslandButtonUIStates : MonoBehaviour, IPointerEnterHandler, IPointe
 
     public void onClick(int level)
     {
-        Debug.Log("Load level " + level);
+        LevelsLoader.Instance.loadLevel(level);
     }
 }

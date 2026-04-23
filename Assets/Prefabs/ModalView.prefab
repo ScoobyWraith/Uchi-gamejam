@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35f340dd06f10f642b103894f76aece4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Carousel: {fileID: 2150273183059441684}
 --- !u!1001 &5277476937442808846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -379,6 +380,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d20aaf653ce1db54e8bcaf538f66fe37, type: 3}
+--- !u!114 &2150273183059441684 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6118724213778295834, guid: d20aaf653ce1db54e8bcaf538f66fe37, type: 3}
+  m_PrefabInstance: {fileID: 5277476937442808846}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c4dcdd68c212d74e9e698428429df90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7456405205192965939 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3334674007092767549, guid: d20aaf653ce1db54e8bcaf538f66fe37, type: 3}

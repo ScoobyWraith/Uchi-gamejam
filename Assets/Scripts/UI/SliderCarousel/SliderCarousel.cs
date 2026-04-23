@@ -38,7 +38,17 @@ public class SliderCarousel : MonoBehaviour
 
     public void onOkClick()
     {
+        close();
+    }
+
+    public void close()
+    {
         gameObject.SetActive(false);
+    }
+
+    public void open()
+    {
+        gameObject.SetActive(true);
     }
 
     public void onLeftClick()
