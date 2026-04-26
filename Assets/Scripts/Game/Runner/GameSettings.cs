@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class GameSettings : MonoBehaviour
 {
+    public int lives = 3;
     public float durationSeconds = 30;
-
+    public float noEnemyStartGapSeconds = 5;
+    public AnimationCurve enemyMinDistanceByTime;
+    public AnimationCurve enemyMaxDistanceByTime;
     public float speed;
+
+    public float playerSpeed;
 
     public AnimationCurve speedByTime;
 
@@ -23,4 +28,53 @@ public class GameSettings : MonoBehaviour
     public GameObject players;
 
     public GameObject enemies;
+
+    void Start()
+    {
+        enemyMaxDistanceByTime = NormalizeX(enemyMaxDistanceByTime);
+        enemyMinDistanceByTime = NormalizeX(enemyMinDistanceByTime);
+        speedByTime = NormalizeX(speedByTime);
+    }
+
+    public static AnimationCurve NormalizeX(AnimationCurve curve)
+    {
+        if (curve == null || curve.length == 0)
+            return new AnimationCurve();
+
+        float minX = float.MaxValue;
+        float maxX = float.MinValue;
+
+        foreach (Keyframe key in curve.keys)
+        {
+            minX = Mathf.Min(minX, key.time);
+            maxX = Mathf.Max(maxX, key.time);
+        }
+
+        if (Mathf.Approximately(minX, maxX))
+        {
+            Keyframe[] newKeys = { new Keyframe(0.5f, curve.Evaluate(minX)) };
+            return new AnimationCurve(newKeys);
+        }
+
+        float range = maxX - minX;
+
+        Keyframe[] normalizedKeys = new Keyframe[curve.length];
+
+        for (int i = 0; i < curve.length; i++)
+        {
+            Keyframe oldKey = curve.keys[i];
+            float normalizedX = (oldKey.time - minX) / range;
+
+            normalizedKeys[i] = new Keyframe(
+                normalizedX,
+                oldKey.value,
+                oldKey.inTangent / range,
+                oldKey.outTangent / range,
+                oldKey.inWeight,
+                oldKey.outWeight
+            );
+        }
+
+        return new AnimationCurve(normalizedKeys);
+    }
 }

@@ -1,38 +1,143 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.Intrinsics;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    void OnCollisionEnter2D(Collision2D collision)
+    private float speed;
+    private int goalPosition;
+    private bool isRun = false;
+    private float distance;
+    private Animator animator;
+    private List<float> positions;
+
+    private string normalBool = "normal";
+    private string upBool = "up";
+    private string downBool = "down";
+    private Action onHit;
+
+    void Start()
     {
-        Debug.Log("Столкнулись с игроком!");
+        animator = GetComponent<Animator>();
     }
-    
-    void OnCollisionStay2D(Collision2D collision)
+
+    public void LoadPlayer(List<float> positions, float speed)
     {
-        Debug.Log($"Всё ещё сталкиваемся с {collision.gameObject.name}");
-        // Например, наносим урон пока касается
+        this.positions = positions;
+        this.speed = speed;
+        
+        goalPosition = positions.Count / 2;
+        Vector3 v = transform.localPosition;
+        transform.localPosition = new Vector3(v.x, positions[goalPosition], v.z);
     }
-    
-    void OnCollisionExit2D(Collision2D collision)
+
+    public void SeteOnHit(Action h)
     {
-        Debug.Log($"Перестали сталкиваться с {collision.gameObject.name}");
+        onHit = h;
     }
-    
-    // Триггер (без физического столкновения, просто пересечение)
+
+    public void StartPlayer()
+    {
+        isRun = true;
+        distance = 0;
+    }
+
+    public void StopPlayer()
+    {
+        isRun = false;
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log($"Объект {other.name} вошёл в зону");
+        onHit?.Invoke();
     }
-    
-    void OnTriggerStay2D(Collider2D other)
+
+    void Update()
     {
-        Debug.Log($"Объект {other.name} всё ещё в зоне");
+        if (!isRun)
+        {
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            goalPosition = Mathf.Clamp(goalPosition - 1, 0, positions.Count - 1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            goalPosition = Mathf.Clamp(goalPosition + 1, 0, positions.Count - 1);
+        }
+
+        Vector3 p = transform.localPosition;
+        float currentY = p.y;
+        float goalY = positions[goalPosition];
+        float deltaY = Time.deltaTime * speed;
+        distance = currentY - goalY;
+
+        if (distance == 0)
+        {
+            SetAnimationNoraml();
+            return;
+        }
+
+        // вверх
+        if (distance < 0)
+        {
+            SetAnimationUp();
+            distance += deltaY;
+
+            if (distance >= 0)
+            {
+                transform.localPosition = new Vector3(p.x, goalY, p.z);
+            }
+            else
+            {
+                transform.localPosition = new Vector3(p.x, currentY + deltaY, p.z);
+            }
+
+            return;
+        }
+
+        // вниз
+        if (distance > 0)
+        {
+            SetAnimationDown();
+            distance -= deltaY;
+
+            if (distance <= 0)
+            {
+                transform.localPosition = new Vector3(p.x, goalY, p.z);
+            }
+            else
+            {
+                transform.localPosition = new Vector3(p.x, currentY - deltaY, p.z);
+            }
+
+            return;
+        }
     }
-    
-    void OnTriggerExit2D(Collider2D other)
+
+    private void SetAnimationUp()
     {
-        Debug.Log($"Объект {other.name} вышел из зоны");
+        animator.SetBool(upBool, true);
+        animator.SetBool(normalBool, false);
+        animator.SetBool(downBool, false);
+    }
+
+     private void SetAnimationDown()
+    {
+        animator.SetBool(downBool, true);
+        animator.SetBool(normalBool, false);
+        animator.SetBool(upBool, false);
+    }
+
+     private void SetAnimationNoraml()
+    {
+        animator.SetBool(normalBool, true);
+        animator.SetBool(upBool, false);
+        animator.SetBool(downBool, false);
     }
 }
