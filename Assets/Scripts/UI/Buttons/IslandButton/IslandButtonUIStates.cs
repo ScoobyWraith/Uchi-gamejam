@@ -6,14 +6,28 @@ using UnityEngine.UI;
 public class IslandButtonUIStates : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
 {
     public Animator animator;
-    private Button button;
+    public GameObject activeStar;
+    public GameObject inactiveStar;
 
+    private Button button;
     private const string isHighlighted = "isHighlighted";
     private const string isPressed = "isPressed";
 
     private void Awake()
     {
         button = GetComponent<Button>();
+    }
+
+    public void ToCompleteState()
+    {
+        activeStar.SetActive(true);
+        inactiveStar.SetActive(false);
+    }
+
+    public void ToUncompleteState()
+    {
+        activeStar.SetActive(false);
+        inactiveStar.SetActive(true);
     }
 
     public void OnPointerEnter(PointerEventData eventData)

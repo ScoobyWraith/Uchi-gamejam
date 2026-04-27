@@ -61,7 +61,8 @@ public class LevelsLoader : MonoBehaviour
     {
         GlobalGame globalGame = GlobalGame.GetInstance();
         ScenesLoader scenesLoader = ScenesLoader.GetInstance();
-        LevelByProgress levelByProgress = levelsByProgress.GetItem(globalGame.GetCurrentProgress());
+        int progress = globalGame.GetCurrentProgress() % levelsByProgress.items.Count;
+        LevelByProgress levelByProgress = levelsByProgress.GetItem(progress);
         scenesLoader.LoadSceneAdditiveWithLoading(levelByProgress.sceneName);
     }
 }

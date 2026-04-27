@@ -2295,7 +2295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lives: 3
   undeathPeriodSeconds: 2
-  gameDurationSeconds: 30
+  gameDurationSeconds: 10
   noEnemyDurationSeconds: 2
   enemyMinDistanceByTime:
     serializedVersion: 2

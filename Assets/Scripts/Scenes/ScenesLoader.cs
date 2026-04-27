@@ -51,8 +51,6 @@ public class ScenesLoader : MonoBehaviour
         ShowLoadingScreen();
         SceneManager.SetActiveScene(criticalScene);
 
-        Debug.Log($"{currentScene.name} {goalSceneName}");
-
         if (!currentScene.name.Equals(criticalScene.name))
         {
             SceneManager.UnloadSceneAsync(currentScene);
