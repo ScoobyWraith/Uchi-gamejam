@@ -7,26 +7,31 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private float speed;
+    private float undeathPeriodSeconds;
+    private float undeathPeriod;
     private int goalPosition;
     private bool isRun = false;
     private float distance;
     private Animator animator;
     private List<float> positions;
-
+    private BoxCollider2D collider2d;
     private string normalBool = "normal";
     private string upBool = "up";
     private string downBool = "down";
+    private string damageBool = "damage";
     private Action onHit;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        collider2d = GetComponent<BoxCollider2D>();
     }
 
-    public void LoadPlayer(List<float> positions, float speed)
+    public void LoadPlayer(List<float> positions, GameSettings gameSettings)
     {
         this.positions = positions;
-        this.speed = speed;
+        this.speed = gameSettings.speed;
+        this.undeathPeriodSeconds = gameSettings.undeathPeriodSeconds;
         
         goalPosition = positions.Count / 2;
         Vector3 v = transform.localPosition;
@@ -42,17 +47,19 @@ public class Player : MonoBehaviour
     {
         isRun = true;
         distance = 0;
+        undeathPeriod = -1;
     }
 
     public void StopPlayer()
     {
         isRun = false;
+        UndeathOff();
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Hit");
         onHit?.Invoke();
+        undeathPeriod = undeathPeriodSeconds;
     }
 
     void Update()
@@ -60,6 +67,16 @@ public class Player : MonoBehaviour
         if (!isRun)
         {
             return;
+        }
+
+        undeathPeriod -= Time.deltaTime;
+
+        if (undeathPeriod > 0)
+        {
+            UndeathOn();
+        } else
+        {
+            UndeathOff();
         }
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -140,5 +157,17 @@ public class Player : MonoBehaviour
         animator.SetBool(normalBool, true);
         animator.SetBool(upBool, false);
         animator.SetBool(downBool, false);
+    }
+
+    private void UndeathOn()
+    {
+        animator.SetBool(damageBool, true);
+        collider2d.enabled = false;
+    }
+
+    private void UndeathOff()
+    {
+        animator.SetBool(damageBool, false);
+        collider2d.enabled = true;
     }
 }

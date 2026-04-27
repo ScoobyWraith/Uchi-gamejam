@@ -5,28 +5,20 @@ using UnityEngine;
 public class GameSettings : MonoBehaviour
 {
     public int lives = 3;
-    public float durationSeconds = 30;
-    public float noEnemyStartGapSeconds = 5;
+    public float undeathPeriodSeconds = 2;
+    public float gameDurationSeconds = 30;
+    public float noEnemyDurationSeconds = 5;
     public AnimationCurve enemyMinDistanceByTime;
     public AnimationCurve enemyMaxDistanceByTime;
     public float speed;
-
-    public float playerSpeed;
-
     public AnimationCurve speedByTime;
-
+    public float playerSpeed;
     public int rows = 3;
-
     public string backName = "river";
-
     public string playerName = "crok";
-
     public string enemiesName = "pool-1";
-
     public GameObject backs;
-
     public GameObject players;
-
     public GameObject enemies;
 
     void Start()

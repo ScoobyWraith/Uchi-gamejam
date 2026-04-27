@@ -51,7 +51,7 @@ public class Game : MonoBehaviour
         MoveEnemies();
         ShowTimerInHUD();
 
-        if (timer > gameSettings.durationSeconds)
+        if (timer > gameSettings.gameDurationSeconds)
         {
             StopGame();
             winModal.OpenModal();
@@ -77,6 +77,15 @@ public class Game : MonoBehaviour
         StartGame();
     }
 
+    public void CompleteGame()
+    {
+        GlobalGame globalGame = GlobalGame.GetInstance();
+        LevelsLoader levelsLoader = LevelsLoader.GetInstance();
+
+        globalGame.IncProgress();
+        levelsLoader.LoadLevelByProgress();
+    }
+    
     private void LoadGame()
     {
         timer = 0;
@@ -90,7 +99,7 @@ public class Game : MonoBehaviour
 
     private void LoadHUD()
     {
-        timerBlock.text = ((int) gameSettings.durationSeconds).ToString();
+        timerBlock.text = ((int) gameSettings.gameDurationSeconds).ToString();
 
         if (lives != null && lives.Count > 0)
         {
@@ -222,7 +231,7 @@ public class Game : MonoBehaviour
     {
         if (player != null)
         {
-            player.LoadPlayer(rowPositions, gameSettings.playerSpeed);
+            player.LoadPlayer(rowPositions, gameSettings);
             return;
         }
         
@@ -254,7 +263,7 @@ public class Game : MonoBehaviour
             rowPositions.Add(startY - (partHeight / 2 + i * partHeight));
         }
 
-        player.LoadPlayer(rowPositions, gameSettings.playerSpeed);
+        player.LoadPlayer(rowPositions, gameSettings);
         
         SpriteRenderer spriteRenderer = player.GetComponent<SpriteRenderer>();
         playerWidth = spriteRenderer.sprite.bounds.size.x;
@@ -263,7 +272,7 @@ public class Game : MonoBehaviour
 
     private void ShowTimerInHUD()
     {
-        int t = (int) (gameSettings.durationSeconds - timer);
+        int t = (int) (gameSettings.gameDurationSeconds - timer);
         timerBlock.text = t.ToString();
     }
 
@@ -285,7 +294,7 @@ public class Game : MonoBehaviour
 
     private void MoveEnemies()
     {
-        if (timer < gameSettings.noEnemyStartGapSeconds)
+        if (timer < gameSettings.noEnemyDurationSeconds)
         {
             return;
         }
@@ -345,14 +354,14 @@ public class Game : MonoBehaviour
 
     private float getCurrentDeltaX()
     {
-        float timePart = Mathf.Clamp(timer / gameSettings.durationSeconds, 0, 1);
+        float timePart = Mathf.Clamp(timer / gameSettings.gameDurationSeconds, 0, 1);
         float k = gameSettings.speedByTime.Evaluate(timePart);
         return Time.fixedDeltaTime * gameSettings.speed * k;
     }
 
     private float getCurrentDistance()
     {
-        float timePart = Mathf.Clamp(timer / gameSettings.durationSeconds, 0, 1);
+        float timePart = Mathf.Clamp(timer / gameSettings.gameDurationSeconds, 0, 1);
         float min = gameSettings.enemyMinDistanceByTime.Evaluate(timePart);
         float max = gameSettings.enemyMaxDistanceByTime.Evaluate(timePart);
 

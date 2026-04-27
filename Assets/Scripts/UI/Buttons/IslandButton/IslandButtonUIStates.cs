@@ -39,8 +39,9 @@ public class IslandButtonUIStates : MonoBehaviour, IPointerEnterHandler, IPointe
         animator.SetBool(isPressed, false);
     }
 
-    public void onClick(int level)
+    public void onClick(int islandNumber)
     {
-        LevelsLoader.Instance.loadLevel(level);
+        LevelsLoader levelsLoader = LevelsLoader.GetInstance();
+        levelsLoader.LoadIsland(islandNumber);
     }
 }

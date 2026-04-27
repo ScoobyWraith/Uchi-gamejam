@@ -42,4 +42,13 @@ public class QuizManager : MonoBehaviour
             button.reset();
         }
     }
+
+    public void CompleteQuiz()
+    {
+        GlobalGame globalGame = GlobalGame.GetInstance();
+        LevelsLoader levelsLoader = LevelsLoader.GetInstance();
+
+        globalGame.IncProgress();
+        levelsLoader.LoadLevelByProgress();
+    }
 }
