@@ -31,15 +31,14 @@ public class Game : MonoBehaviour
     private float playerWidth;
     private System.Random rnd;
 
-    void Start()
+    public void Start()
     {
         mainCamera = Camera.main;
         
         LoadGame();
-        LoadHUD();
     }
 
-    void FixedUpdate()
+    public void FixedUpdate()
     {
         if (!isRun)
         {
@@ -49,7 +48,7 @@ public class Game : MonoBehaviour
         timer += Time.fixedDeltaTime;
         MoveBackground();
         MoveEnemies();
-        ShowHUD();
+        ShowTimerInHUD();
 
         if (timer > gameSettings.durationSeconds)
         {
@@ -71,36 +70,10 @@ public class Game : MonoBehaviour
         player.StopPlayer();
     }
 
-    public void LoadHUD()
+    public void RestartGame()
     {
-        timerBlock.text = ((int) gameSettings.durationSeconds).ToString();
-
-        lives.Add(heart);
-
-        for (int i = 0; i < gameSettings.lives - 1; i++)
-        {
-            GameObject l = Instantiate(heart, heart.transform.parent);
-            lives.Add(l);
-        }
-    }
-
-    public void ShowHUD()
-    {
-        int t = (int) (gameSettings.durationSeconds - timer);
-        timerBlock.text = t.ToString();
-    }
-
-    public void HitPlayer()
-    {
-        GameObject live = lives[lives.Count - 1];
-        lives.RemoveAt(lives.Count - 1);
-        Destroy(live);
-
-        if (lives.Count == 0)
-        {
-            StopGame();
-            failModal.OpenModal();
-        }
+        LoadGame();
+        StartGame();
     }
 
     private void LoadGame()
@@ -111,20 +84,31 @@ public class Game : MonoBehaviour
         LoadBackgrounds();
         LoadPlayer();
         LoadEnemies();
+        LoadHUD();
     }
 
-    public void Restart()
+    private void LoadHUD()
     {
-        timer = 0;
-        rnd = new System.Random();
-        LoadPlayer();
-        LoadEnemies();
+        timerBlock.text = ((int) gameSettings.durationSeconds).ToString();
 
-        StartGame();
+        lives = new List<GameObject>();
+        heart.SetActive(false);
+
+        for (int i = 0; i < gameSettings.lives; i++)
+        {
+            GameObject l = Instantiate(heart, heart.transform.parent);
+            l.SetActive(true);
+            lives.Add(l);
+        }
     }
 
     private void LoadBackgrounds()
     {
+        if (background2 != null)
+        {
+            return;
+        }
+        
         Transform parent = gameSettings.backs.transform;
 
         for (int i = 0; i < parent.childCount; i++)
@@ -156,17 +140,10 @@ public class Game : MonoBehaviour
         originalBackgroundPosition = background1.localPosition;
     }
 
-    private Vector2 GetScreenSize()
-    {
-        float aspectRatio = (float)Screen.width / (float)Screen.height;
-        float screenHeight = 2f * mainCamera.orthographicSize;
-        float screenWeight = screenHeight * aspectRatio;
-
-        return new Vector2(screenWeight, screenHeight);
-    }
-
     private void LoadEnemies()
     {
+        enemies = new List<Transform>();
+
         Vector2 screenSize = GetScreenSize();
         float screenWeight = screenSize.x;
         
@@ -218,8 +195,14 @@ public class Game : MonoBehaviour
         lastEnemy = enemy;
     }
 
-    public void LoadPlayer()
+    private void LoadPlayer()
     {
+        if (player != null)
+        {
+            player.LoadPlayer(rowPositions, gameSettings.playerSpeed);
+            return;
+        }
+        
         Transform parent = gameSettings.players.transform;
         GameObject p = null;
 
@@ -248,12 +231,17 @@ public class Game : MonoBehaviour
             rowPositions.Add(startY - (partHeight / 2 + i * partHeight));
         }
 
-        player.LoadPlayer(rowPositions, gameSettings.playerSpeed);
         SpriteRenderer spriteRenderer = player.GetComponent<SpriteRenderer>();
         playerWidth = spriteRenderer.sprite.bounds.size.x;
         player.SeteOnHit(HitPlayer);
     }
-    
+
+    private void ShowTimerInHUD()
+    {
+        int t = (int) (gameSettings.durationSeconds - timer);
+        timerBlock.text = t.ToString();
+    }
+
     private void MoveBackground()
     {
         float deltaX = -getCurrentDeltaX();
@@ -306,6 +294,28 @@ public class Game : MonoBehaviour
                 lastEnemy = pool[i];
             }
         }
+    }
+    
+    private void HitPlayer()
+    {
+        GameObject live = lives[lives.Count - 1];
+        lives.RemoveAt(lives.Count - 1);
+        Destroy(live);
+
+        if (lives.Count == 0)
+        {
+            StopGame();
+            failModal.OpenModal();
+        }
+    }
+
+    private Vector2 GetScreenSize()
+    {
+        float aspectRatio = (float)Screen.width / (float)Screen.height;
+        float screenHeight = 2f * mainCamera.orthographicSize;
+        float screenWeight = screenHeight * aspectRatio;
+
+        return new Vector2(screenWeight, screenHeight);
     }
 
     private float getCurrentDeltaX()
