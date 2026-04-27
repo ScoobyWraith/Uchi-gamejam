@@ -91,6 +91,15 @@ public class Game : MonoBehaviour
     {
         timerBlock.text = ((int) gameSettings.durationSeconds).ToString();
 
+        if (lives != null && lives.Count > 0)
+        {
+        
+            foreach (GameObject item in lives)
+            {
+                Destroy(item);
+            }
+        }
+
         lives = new List<GameObject>();
         heart.SetActive(false);
 
@@ -142,6 +151,14 @@ public class Game : MonoBehaviour
 
     private void LoadEnemies()
     {
+        if (enemies != null && enemies.Count > 0)
+        {
+            foreach (Transform item in enemies)
+            {
+                Destroy(item);
+            }
+        }
+        
         enemies = new List<Transform>();
 
         Vector2 screenSize = GetScreenSize();
@@ -171,7 +188,10 @@ public class Game : MonoBehaviour
             Transform child = parent.GetChild(i);
             child.localPosition -= new Vector3(2 * screenWeight, 0, 0);
             child.gameObject.SetActive(true);
-            enemies.Add(child);
+
+            enemies.Add(Instantiate(child, parent));
+
+            child.gameObject.SetActive(false);
         }
 
         float scaleY = screenWeight / playerWidth;
@@ -182,7 +202,7 @@ public class Game : MonoBehaviour
         {
             enemiesQuantity--;
             Transform eP = enemies[enemyIndex++];
-            Transform e = Instantiate(eP, eP.parent);
+            Transform e = Instantiate(eP, parent);
             enemies.Add(e);
         }
 
