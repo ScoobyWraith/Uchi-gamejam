@@ -21,6 +21,7 @@ public class Game : MonoBehaviour
     private Transform background2;
     private Vector3 originalBackgroundPosition;
     private List<Transform> enemies = new List<Transform>();
+        private List<Transform> originalEnemies = new List<Transform>();
     private Transform lastEnemy;
     private List<float> rowPositions = new List<float>();
     private Camera mainCamera;
@@ -145,7 +146,7 @@ public class Game : MonoBehaviour
         float deltaX = backgroundWidth / 2 - screenWeight / 2;
         background1.localPosition = new Vector3(deltaX, 0, 0);
         background2 = Instantiate(background1, background1.parent);
-        background2.localPosition = background1.localPosition + new Vector3(backgroundWidth, 0);
+        background2.localPosition = background1.localPosition + new Vector3(backgroundWidth * 0.9999f, 0);
         originalBackgroundPosition = background1.localPosition;
     }
 
@@ -155,10 +156,10 @@ public class Game : MonoBehaviour
         {
             foreach (Transform item in enemies)
             {
-                Destroy(item);
+                Destroy(item.gameObject);
             }
         }
-        
+
         enemies = new List<Transform>();
 
         Vector2 screenSize = GetScreenSize();
@@ -182,28 +183,30 @@ public class Game : MonoBehaviour
         }
 
         parent = pool.transform;
-       
-        for (int i = 0; i < parent.childCount; i++)
+
+        if (originalEnemies.Count == 0)
         {
-            Transform child = parent.GetChild(i);
-            child.localPosition -= new Vector3(2 * screenWeight, 0, 0);
-            child.gameObject.SetActive(true);
-
-            enemies.Add(Instantiate(child, parent));
-
-            child.gameObject.SetActive(false);
+            for (int i = 0; i < parent.childCount; i++)
+            {
+                Transform child = parent.GetChild(i);
+                child.localPosition = new Vector3(-2 * screenWeight, 0, 0);
+                child.gameObject.SetActive(false);
+                originalEnemies.Add(child);
+            }
         }
-
+        
         float scaleY = screenWeight / playerWidth;
-        int enemiesQuantity = (int)(scaleY * gameSettings.rows) - enemies.Count;
+        int enemiesQuantity = (int)(scaleY * gameSettings.rows);
         int enemyIndex = 0;
 
         while (enemiesQuantity > 0)
         {
             enemiesQuantity--;
-            Transform eP = enemies[enemyIndex++];
-            Transform e = Instantiate(eP, parent);
-            enemies.Add(e);
+            Transform originalenemy = originalEnemies[enemyIndex];
+            Transform copyEnemy = Instantiate(originalenemy, parent);
+            copyEnemy.gameObject.SetActive(true);
+            enemies.Add(copyEnemy);
+            enemyIndex = (enemyIndex + 1) % originalEnemies.Count;
         }
 
         Transform enemy = enemies[rnd.Next(enemies.Count)];
@@ -251,6 +254,8 @@ public class Game : MonoBehaviour
             rowPositions.Add(startY - (partHeight / 2 + i * partHeight));
         }
 
+        player.LoadPlayer(rowPositions, gameSettings.playerSpeed);
+        
         SpriteRenderer spriteRenderer = player.GetComponent<SpriteRenderer>();
         playerWidth = spriteRenderer.sprite.bounds.size.x;
         player.SeteOnHit(HitPlayer);
