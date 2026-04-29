@@ -1400,9 +1400,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   failModal: {fileID: 526677640}
   winModal: {fileID: 1852203623}
-  gameSettings: {fileID: 1349161980}
   heart: {fileID: 1555300705}
   timerBlock: {fileID: 1377225656}
+  backsObject: {fileID: 1023341022}
+  playersObject: {fileID: 1940662223}
+  enemiesObject: {fileID: 2117462014}
+  runGameConfig: {fileID: 11400000, guid: 59cf34303163a5049bd7a3282aa786d6, type: 2}
 --- !u!4 &652470528
 Transform:
   m_ObjectHideFlags: 0
@@ -2264,135 +2267,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1349161979
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1349161981}
-  - component: {fileID: 1349161980}
-  m_Layer: 0
-  m_Name: GameSettings
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1349161980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1349161979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10ef3bcfc3b4bc84faac41663373bfbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lives: 3
-  undeathPeriodSeconds: 2
-  gameDurationSeconds: 10
-  noEnemyDurationSeconds: 2
-  enemyMinDistanceByTime:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: -0.03135655
-      outSlope: -0.03135655
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1.0024414
-      value: 0.9685669
-      inSlope: -0.03135655
-      outSlope: -0.03135655
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  enemyMaxDistanceByTime:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0.017410051
-      value: 3.9993057
-      inSlope: -1.104657
-      outSlope: -1.104657
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 3.2178671
-      value: 0.46389818
-      inSlope: -1.104657
-      outSlope: -1.104657
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  speed: 10
-  speedByTime:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  playerSpeed: 10
-  rows: 3
-  backName: road
-  playerName: croc
-  enemiesName: pool-1
-  backs: {fileID: 1023341022}
-  players: {fileID: 1940662223}
-  enemies: {fileID: 2117462014}
---- !u!4 &1349161981
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1349161979}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2635087, y: 0.5072927, z: -9.944851}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1377225655
 GameObject:
   m_ObjectHideFlags: 0
@@ -3020,5 +2894,4 @@ SceneRoots:
   - {fileID: 323353444}
   - {fileID: 1244002102}
   - {fileID: 644899728}
-  - {fileID: 1349161981}
   - {fileID: 652470528}

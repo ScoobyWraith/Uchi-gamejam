@@ -12,16 +12,20 @@ public class Game : MonoBehaviour
 {
     public ModalView failModal;
     public ModalView winModal;
-    public GameSettings gameSettings;
     public GameObject heart;
     public Text timerBlock;
+    public GameObject backsObject;
+    public GameObject playersObject;
+    public GameObject enemiesObject;
+    public RunGameConfig runGameConfig;
     
+    private RunGameSettings gameSettings;
     private List<GameObject> lives = new List<GameObject>();
     private Transform background1;
     private Transform background2;
     private Vector3 originalBackgroundPosition;
     private List<Transform> enemies = new List<Transform>();
-        private List<Transform> originalEnemies = new List<Transform>();
+    private List<Transform> originalEnemies = new List<Transform>();
     private Transform lastEnemy;
     private List<float> rowPositions = new List<float>();
     private Camera mainCamera;
@@ -36,6 +40,7 @@ public class Game : MonoBehaviour
     {
         mainCamera = Camera.main;
         
+        LoadSettings();
         LoadGame();
         ScenesLoader.SceneLoaded();
     }
@@ -86,7 +91,14 @@ public class Game : MonoBehaviour
         globalGame.IncProgress();
         levelsLoader.LoadLevelByProgress();
     }
-    
+
+    private void LoadSettings()
+    {
+        GlobalGame globalGame = GlobalGame.GetInstance();
+
+        gameSettings = runGameConfig.GetSettingsByProgress(globalGame.GetCurrentProgress());
+    }
+ 
     private void LoadGame()
     {
         timer = 0;
@@ -129,7 +141,7 @@ public class Game : MonoBehaviour
             return;
         }
         
-        Transform parent = gameSettings.backs.transform;
+        Transform parent = backsObject.transform;
 
         for (int i = 0; i < parent.childCount; i++)
         {
@@ -175,7 +187,7 @@ public class Game : MonoBehaviour
         Vector2 screenSize = GetScreenSize();
         float screenWeight = screenSize.x;
         
-        Transform parent = gameSettings.enemies.transform;
+        Transform parent = enemiesObject.transform;
         GameObject pool = null;
 
         for (int i = 0; i < parent.childCount; i++)
@@ -236,7 +248,7 @@ public class Game : MonoBehaviour
             return;
         }
         
-        Transform parent = gameSettings.players.transform;
+        Transform parent = playersObject.transform;
         GameObject p = null;
 
         for (int i = 0; i < parent.childCount; i++)
@@ -369,7 +381,7 @@ public class Game : MonoBehaviour
         return (float)(playerWidth * (min + rnd.NextDouble() * (max - min)));
     }
 
-    public void ShuffleList<T>(IList<T> list)
+    private void ShuffleList<T>(IList<T> list)
     {
         int n = list.Count;
         
@@ -380,5 +392,54 @@ public class Game : MonoBehaviour
             list[i] = list[j];
             list[j] = temp;
         }
+    }
+
+    private void NormolizeCurves()
+    {
+        gameSettings.enemyMaxDistanceByTime = NormalizeCurve(gameSettings.enemyMaxDistanceByTime);
+        gameSettings.enemyMinDistanceByTime = NormalizeCurve(gameSettings.enemyMinDistanceByTime);
+        gameSettings.speedByTime = NormalizeCurve(gameSettings.speedByTime);
+    }
+
+    private static AnimationCurve NormalizeCurve(AnimationCurve curve)
+    {
+        if (curve == null || curve.length == 0)
+            return new AnimationCurve();
+
+        float minX = float.MaxValue;
+        float maxX = float.MinValue;
+
+        foreach (Keyframe key in curve.keys)
+        {
+            minX = Mathf.Min(minX, key.time);
+            maxX = Mathf.Max(maxX, key.time);
+        }
+
+        if (Mathf.Approximately(minX, maxX))
+        {
+            Keyframe[] newKeys = { new Keyframe(0.5f, curve.Evaluate(minX)) };
+            return new AnimationCurve(newKeys);
+        }
+
+        float range = maxX - minX;
+
+        Keyframe[] normalizedKeys = new Keyframe[curve.length];
+
+        for (int i = 0; i < curve.length; i++)
+        {
+            Keyframe oldKey = curve.keys[i];
+            float normalizedX = (oldKey.time - minX) / range;
+
+            normalizedKeys[i] = new Keyframe(
+                normalizedX,
+                oldKey.value,
+                oldKey.inTangent / range,
+                oldKey.outTangent / range,
+                oldKey.inWeight,
+                oldKey.outWeight
+            );
+        }
+
+        return new AnimationCurve(normalizedKeys);
     }
 }

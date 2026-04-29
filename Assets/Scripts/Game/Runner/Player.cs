@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
         collider2d = GetComponent<BoxCollider2D>();
     }
 
-    public void LoadPlayer(List<float> positions, GameSettings gameSettings)
+    public void LoadPlayer(List<float> positions, RunGameSettings gameSettings)
     {
         this.positions = positions;
         this.speed = gameSettings.speed;
