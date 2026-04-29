@@ -18,6 +18,7 @@ public class Game : MonoBehaviour
     public GameObject playersObject;
     public GameObject enemiesObject;
     public RunGameConfig runGameConfig;
+    public float cheatTime = 0;
     
     private RunGameSettings gameSettings;
     private List<GameObject> lives = new List<GameObject>();
@@ -97,6 +98,13 @@ public class Game : MonoBehaviour
         GlobalGame globalGame = GlobalGame.GetInstance();
 
         gameSettings = runGameConfig.GetSettingsByProgress(globalGame.GetCurrentProgress());
+
+        if (cheatTime >= 1)
+        {
+            gameSettings.gameDurationSeconds = cheatTime;
+        }
+
+        NormolizeCurves();
     }
  
     private void LoadGame()
