@@ -13,6 +13,29 @@ public class QuizManager : MonoBehaviour
 
     public void Start()
     {
+        LoadSlides();
+        ScenesLoader.SceneLoaded();
+    }
+
+    public void reset()
+    {
+        foreach(QuizButton button in answers)
+        {
+            button.reset();
+        }
+    }
+
+    public void CompleteQuiz()
+    {
+        GlobalGame globalGame = GlobalGame.GetInstance();
+        LevelsLoader levelsLoader = LevelsLoader.GetInstance();
+
+        globalGame.IncProgress();
+        levelsLoader.LoadLevelByProgress();
+    }
+
+    private void LoadSlides()
+    {
         Transform parent = Answers.transform;
 
         for (int i = 0; i < parent.childCount; i++)
@@ -33,22 +56,5 @@ public class QuizManager : MonoBehaviour
                 });
             }
         }
-    }
-
-    public void reset()
-    {
-        foreach(QuizButton button in answers)
-        {
-            button.reset();
-        }
-    }
-
-    public void CompleteQuiz()
-    {
-        GlobalGame globalGame = GlobalGame.GetInstance();
-        LevelsLoader levelsLoader = LevelsLoader.GetInstance();
-
-        globalGame.IncProgress();
-        levelsLoader.LoadLevelByProgress();
     }
 }

@@ -37,6 +37,7 @@ public class Game : MonoBehaviour
         mainCamera = Camera.main;
         
         LoadGame();
+        ScenesLoader.SceneLoaded();
     }
 
     public void FixedUpdate()

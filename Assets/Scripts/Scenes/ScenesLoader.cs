@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class ScenesLoader : MonoBehaviour
 {
+    private static bool sceneLoaded;
+    
     private static ScenesLoader instance;
     
     public GameObject loadingScreen;
@@ -15,6 +17,11 @@ public class ScenesLoader : MonoBehaviour
     public static ScenesLoader GetInstance()
     {
         return instance;
+    }
+
+    public static void SceneLoaded()
+    {
+        sceneLoaded = true;
     }
 
     public void Awake()
@@ -47,6 +54,7 @@ public class ScenesLoader : MonoBehaviour
 
     private IEnumerator LoadSceneCoroutine(string goalSceneName)
     {
+        sceneLoaded = false;
         Scene currentScene = SceneManager.GetActiveScene();
         ShowLoadingScreen();
         SceneManager.SetActiveScene(criticalScene);
@@ -82,6 +90,12 @@ public class ScenesLoader : MonoBehaviour
 
         asyncLoad.allowSceneActivation = true;
         yield return asyncLoad;
+
+        while(!sceneLoaded)
+        {
+            yield return null;
+        }
+
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(goalSceneName));
         HideLoadingScreen();
     }

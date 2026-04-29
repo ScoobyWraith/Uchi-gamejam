@@ -1,3 +1,4 @@
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -13,6 +14,7 @@ public class IslandButtonUIStates : MonoBehaviour, IPointerEnterHandler, IPointe
     public GameObject completeIcon;
 
     private Button button;
+    private bool isInteractable = true;
     private Color[] originalColors;
     private Image[] images;
     private const string isHighlighted = "isHighlighted";
@@ -28,7 +30,8 @@ public class IslandButtonUIStates : MonoBehaviour, IPointerEnterHandler, IPointe
     {
         ShowCompleteStar();
         ShowCompleteIcon();
-        button.interactable = false;
+        button.enabled = false;
+        isInteractable = false;
         RestoreColorsOfImages();
     }
 
@@ -48,7 +51,7 @@ public class IslandButtonUIStates : MonoBehaviour, IPointerEnterHandler, IPointe
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (button.interactable)
+        if (button.interactable && isInteractable)
             animator.SetBool(isHighlighted, true);
     }
 
@@ -60,7 +63,7 @@ public class IslandButtonUIStates : MonoBehaviour, IPointerEnterHandler, IPointe
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (button.interactable)
+        if (button.interactable && isInteractable)
             animator.SetBool(isPressed, true);
     }
 

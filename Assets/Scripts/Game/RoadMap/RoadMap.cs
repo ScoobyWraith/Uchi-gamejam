@@ -23,6 +23,7 @@ public class RoadMap : MonoBehaviour
         islands.Sort((a, b) => ExtractNumber(a.gameObject.name).CompareTo(ExtractNumber(b.gameObject.name)));
         
         LoadRoadMap();
+        ScenesLoader.SceneLoaded();
     }
 
     public void LoadRoadMap()
