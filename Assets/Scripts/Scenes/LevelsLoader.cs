@@ -24,7 +24,10 @@ public class LevelsLoader : MonoBehaviour
         }
 
         instance = this;
+    }
 
+    public void LoadGameCoroutine()
+    {
         StartCoroutine(LoadGame());
     }
 
