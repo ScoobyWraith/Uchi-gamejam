@@ -8,26 +8,42 @@ public class IslandButtonUIStates : MonoBehaviour, IPointerEnterHandler, IPointe
     public Animator animator;
     public GameObject activeStar;
     public GameObject inactiveStar;
+    public GameObject round;
+    public GameObject keylock;
+    public GameObject completeIcon;
 
     private Button button;
+    private Color[] originalColors;
+    private Image[] images;
     private const string isHighlighted = "isHighlighted";
     private const string isPressed = "isPressed";
 
-    private void Awake()
+    private void Start()
     {
         button = GetComponent<Button>();
+        SaveOriginalColors();
     }
 
-    public void ToCompleteState()
+    public void ShowCompleteState()
     {
-        activeStar.SetActive(true);
-        inactiveStar.SetActive(false);
+        ShowCompleteStar();
+        ShowCompleteIcon();
+        button.interactable = false;
+        RestoreColorsOfImages();
     }
 
-    public void ToUncompleteState()
+    public void ShowUncompleteState()
     {
-        activeStar.SetActive(false);
-        inactiveStar.SetActive(true);
+        ShowUnompleteStar();
+        ShowRound();
+    }
+
+    public void ShowLockedState()
+    {
+        SetImagesToBlackWhite();
+        ShowKeylock();
+        HideStar();
+        button.interactable = false;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -57,5 +73,75 @@ public class IslandButtonUIStates : MonoBehaviour, IPointerEnterHandler, IPointe
     {
         LevelsLoader levelsLoader = LevelsLoader.GetInstance();
         levelsLoader.LoadIsland(islandNumber);
+    }
+
+    private void SaveOriginalColors()
+    {
+        images = GetComponentsInChildren<Image>();
+        originalColors = new Color[images.Length];
+        int i = 0;
+
+        foreach(Image img in images)
+        {
+            originalColors[i++] = img.color;
+        }
+    }
+
+    private void ShowCompleteStar()
+    {
+        activeStar.SetActive(true);
+        inactiveStar.SetActive(false);
+    }
+
+    private void ShowUnompleteStar()
+    {
+        activeStar.SetActive(false);
+        inactiveStar.SetActive(true);
+    }
+
+    private void HideStar()
+    {
+        activeStar.SetActive(false);
+        inactiveStar.SetActive(false);
+    }
+
+    private void ShowRound()
+    {
+        round.SetActive(true);
+        keylock.SetActive(false);
+        completeIcon.SetActive(false);
+    }
+
+    private void ShowKeylock()
+    {
+        round.SetActive(false);
+        keylock.SetActive(true);
+        completeIcon.SetActive(false);
+    }
+
+    private void ShowCompleteIcon()
+    {
+        round.SetActive(false);
+        keylock.SetActive(false);
+        completeIcon.SetActive(true);
+    }
+
+    private void SetImagesToBlackWhite()
+    {
+        foreach (Image img in images)
+        {
+            float gray = img.color.grayscale;
+            img.color = new Color(gray, gray, gray, img.color.a);
+        }
+    }
+
+    private void RestoreColorsOfImages()
+    {
+        int i = 0;
+        
+        foreach (Image img in images)
+        {
+            img.color = originalColors[i++];
+        }
     }
 }

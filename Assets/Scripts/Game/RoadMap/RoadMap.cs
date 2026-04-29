@@ -31,21 +31,33 @@ public class RoadMap : MonoBehaviour
 
         int currentProgress = globalGame.GetCurrentProgress();
         List<int> completedIslands = islandsByProgress.GetCompleted(currentProgress);
+        int currentIsland = 0;
+
+        if (completedIslands.Count > 0)
+        {
+            currentIsland = completedIslands[completedIslands.Count - 1] + 1;
+        }
 
         for (int i = 0; i < islands.Count; i++)
         {
-            if (completedIslands.Contains(i))
+            IslandButtonUIStates island = islands[i];
+            
+            if (i < currentIsland)
             {
-                islands[i].ToCompleteState();
+                island.ShowCompleteState();
+            }
+            else if (i == currentIsland)
+            {
+                island.ShowUncompleteState();
             } 
             else
             {
-                islands[i].ToUncompleteState();
+                island.ShowLockedState();
             }
         }
     }
 
-        private int ExtractNumber(string name)
+    private int ExtractNumber(string name)
     {
         Match match = Regex.Match(name, @"island-(\d+)$");
         
