@@ -1,1 +1,7 @@
+elements.png filter=lfs diff=lfs merge=lfs -text
+Assets/Belevich/2D filter=lfs diff=lfs merge=lfs -text
+Casual filter=lfs diff=lfs merge=lfs -text
+Game filter=lfs diff=lfs merge=lfs -text
+UI filter=lfs diff=lfs merge=lfs -text
+HD/Sprite/popup filter=lfs diff=lfs merge=lfs -text
 Assets/Belevich/2D[[:space:]]Casual[[:space:]]Game[[:space:]]UI[[:space:]]HD/Sprite/popup[[:space:]]elements.png filter=lfs diff=lfs merge=lfs -text
