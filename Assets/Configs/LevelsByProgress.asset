@@ -18,13 +18,13 @@ MonoBehaviour:
   - progress: 1
     sceneName: Quiz-1-1
   - progress: 2
-    sceneName: RunGame
+    sceneName: JumpGame
   - progress: 3
     sceneName: RoadMapMenu
   - progress: 4
     sceneName: Quiz-1-1
   - progress: 5
-    sceneName: RunGame
+    sceneName: JumpGame
   - progress: 6
     sceneName: RoadMapMenu
   - progress: 7

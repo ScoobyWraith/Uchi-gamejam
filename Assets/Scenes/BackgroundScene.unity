@@ -825,7 +825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79ca18c4befa4cd4a92a38d474ff8088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initProgress: 0
+  initProgress: 2
 --- !u!4 &1622030807
 Transform:
   m_ObjectHideFlags: 0

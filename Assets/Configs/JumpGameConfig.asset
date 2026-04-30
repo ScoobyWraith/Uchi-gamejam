@@ -1,0 +1,196 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ff384113dafd354483b8a11f433acd3, type: 3}
+  m_Name: JumpGameConfig
+  m_EditorClassIdentifier: 
+  items:
+  - progress: 2
+    settings:
+      lives: 3
+      undeathPeriodSeconds: 2
+      gameDurationSeconds: 30
+      noEnemyDurationSeconds: 3
+      minUnholeDistance:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 8.127104
+          inSlope: -1.711356
+          outSlope: -1.711356
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 3.4255524
+          inSlope: -1.711356
+          outSlope: -1.711356
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33333334
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      maxUnholeDistance:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 9.244431
+          inSlope: -0.25261238
+          outSlope: -0.25261238
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 6.951721
+          inSlope: -0.25261238
+          outSlope: -0.25261238
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33333334
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minHoleSize:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: -0.5620117
+          value: 1.043808
+          inSlope: 0.13333127
+          outSlope: 0.13333127
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.3537484
+        - serializedVersion: 3
+          time: 1.1596882
+          value: 1.2769554
+          inSlope: 0.15710656
+          outSlope: 0.15710656
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.3447441
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      maxHoleSize:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: -0.06850672
+          value: 2.0376067
+          inSlope: 0.09036252
+          outSlope: 0.09036252
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.09613708
+        - serializedVersion: 3
+          time: 2.9884186
+          value: 2.4829316
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minBreakDistance:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 3.003321
+          inSlope: -0.33821246
+          outSlope: -0.33821246
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 2.5161233
+          inSlope: -0.33821246
+          outSlope: -0.33821246
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33333334
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      maxBreakDistance:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 3.992775
+          inSlope: -0.91157615
+          outSlope: -0.91157615
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.55403996
+        - serializedVersion: 3
+          time: 0.99572754
+          value: 3.2523808
+          inSlope: -0.73003745
+          outSlope: -0.73003745
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.5529597
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      speed: 10
+      speedByTime:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0.7341183
+          outSlope: 0.7341183
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 1.7583313
+          inSlope: 0.7341183
+          outSlope: 0.7341183
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33333334
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      playerJump: 30
+      platformDistanceFromBottom: 0.3
+      backName: river
+      playerName: croc
+      enemiesName: pool-1
+      platformName: platform

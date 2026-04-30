@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
     public void LoadPlayer(List<float> positions, RunGameSettings gameSettings)
     {
         this.positions = positions;
-        this.speed = gameSettings.speed;
+        this.speed = gameSettings.playerSpeed;
         this.undeathPeriodSeconds = gameSettings.undeathPeriodSeconds;
         
         goalPosition = positions.Count / 2;
@@ -58,6 +58,10 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        HitPlayer();
+    }
+
+    private void HitPlayer() {
         onHit?.Invoke();
         undeathPeriod = undeathPeriodSeconds;
     }
