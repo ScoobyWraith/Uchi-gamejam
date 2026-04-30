@@ -14,6 +14,6 @@ public class ModalView : MonoBehaviour
     public void OpenModal()
     {
         gameObject.SetActive(true);
-        Carousel.open();
+        Carousel.Open();
     }
 }
