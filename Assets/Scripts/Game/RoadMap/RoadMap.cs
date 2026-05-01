@@ -7,6 +7,8 @@ public class RoadMap : MonoBehaviour
 {
    public IslandsByProgress islandsByProgress;
    public GameObject islandsPool;
+   public GameObject popupsObject;
+   public RoudmapPopupsConfig popupsConfig;
    
    private List<IslandButtonUIStates> islands = new List<IslandButtonUIStates>();
    
@@ -23,10 +25,11 @@ public class RoadMap : MonoBehaviour
         islands.Sort((a, b) => ExtractNumber(a.gameObject.name).CompareTo(ExtractNumber(b.gameObject.name)));
         
         LoadRoadMap();
+        LoadPopup();
         ScenesLoader.SceneLoaded();
     }
 
-    public void LoadRoadMap()
+    private void LoadRoadMap()
     {
         GlobalGame globalGame = GlobalGame.GetInstance();
 
@@ -54,6 +57,29 @@ public class RoadMap : MonoBehaviour
             else
             {
                 island.ShowLockedState();
+            }
+        }
+    }
+
+    private void LoadPopup()
+    {
+        GlobalGame globalGame = GlobalGame.GetInstance();
+
+        int currentProgress = globalGame.GetCurrentProgress();
+        string popupName = popupsConfig.GetPopupName(currentProgress);
+
+        Transform parent = popupsObject.transform;
+
+        for (int i = 0; i < parent.childCount; i++)
+        {
+            GameObject child = parent.GetChild(i).gameObject;
+
+            if (child.name.Equals(popupName))
+            {
+                child.SetActive(true);
+            } else
+            {
+                child.SetActive(false);
             }
         }
     }

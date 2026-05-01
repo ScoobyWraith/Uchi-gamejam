@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad17499e01310a4458f9719a812938b9, type: 3}
+  m_Name: RoudmapPopupsConfig
+  m_EditorClassIdentifier: 
+  folder: 
+  items:
+  - progress: 0
+    popup: init
+  - progress: 3
+    popup: after 1
+  - progress: 6
+    popup: after 2
+  - progress: 9
+    popup: after 3
+  - progress: 12
+    popup: after 4
+  - progress: 15
+    popup: after 5
+  - progress: 18
+    popup: after 6
+  - progress: 21
+    popup: after 7

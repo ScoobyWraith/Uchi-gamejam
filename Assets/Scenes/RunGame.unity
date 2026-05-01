@@ -1786,7 +1786,7 @@ MonoBehaviour:
   playersObject: {fileID: 1940662223}
   enemiesObject: {fileID: 2117462014}
   runGameConfig: {fileID: 11400000, guid: 59cf34303163a5049bd7a3282aa786d6, type: 2}
-  cheatTime: 30
+  cheatTime: 7
 --- !u!4 &652470528
 Transform:
   m_ObjectHideFlags: 0
