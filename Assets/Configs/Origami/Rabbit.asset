@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e2de279c74cd53489ca27cbb17ae004, type: 3}
+  m_Name: Rabbit
+  m_EditorClassIdentifier: 
+  folder: Origami_rabbit
+  items:
+  - fileName: origami_rabbit_01
+    text: "Возьми квадратный лист бумаги, обращенной ромбом вверх. Загни верхний угол так, чтобы он соприкасался с нижним, сделав горизонтальную диагональную складку."
+  - fileName: origami_rabbit_02
+    text: "Согни оба верхних левого и правого угла вниз, чтобы они совпали с нижним углом."
+  - fileName: origami_rabbit_03
+    text: "Загни нижний левый и правый края так, чтобы они совпадали с центральной линией."
+  - fileName: origami_rabbit_04
+    text: "Открой верхний правый клапан и расправь его. Выровняй диагональный край по центральной линии, когда будешь разглаживать его."
+  - fileName: origami_rabbit_05
+    text: "Повтори шаг 4 с левой стороны."
+  - fileName: origami_rabbit_06
+    text: "Сложи модель пополам, заведя правую сторону за левую."
+  - fileName: origami_rabbit_07
+    text: "Поверни модельку на 30° против часовой стрелки."
+  - fileName: origami_rabbit_08
+    text: "Отогни верхний клапан снизу вверх вдоль пунктирной линии, чтобы сформировать первое ухо животного."
+  - fileName: origami_rabbit_09
+    text: "Повтори шаг 8 с другой стороны."
+  - fileName: origami_rabbit_10
+    text: "Загни правый край уха внутрь так, чтобы он совпал с точкой пересечения головы и уха. Затем повтори с другой стороны."
+  - fileName: origami_rabbit_11
+    text: "Заверни голову за уши, слегка надавив на верхний угол (нос животного). Убедитесь, что две контрольные точки совпадают."
+  - fileName: origami_rabbit_12
+    text: "Сделай небольшую складку, чтобы получился хвостик животного. Для начала сделай складку вдоль пунктирных линий, затем разверни. Слегка раздвинь слои, затем сложи хвостик в обратную сторону, чтобы получилась складка."
+  - fileName: origami_rabbit_13
+    text: "Загни кончик носа в обратную сторону по пунктирной линии, чтобы придать форму мордочки животного."
+  - fileName: origami_rabbit_14
+    text: "Аккуратно приоткрой уши, чтобы придать им более полную форму."
+  - fileName: origami_rabbit_15
+    text: "Какое животное у тебя получилось?"

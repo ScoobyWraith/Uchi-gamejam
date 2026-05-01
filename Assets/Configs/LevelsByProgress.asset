@@ -22,37 +22,37 @@ MonoBehaviour:
   - progress: 3
     sceneName: RoadMapMenu
   - progress: 4
-    sceneName: Quiz-1-1
+    sceneName: Quiz-2
   - progress: 5
     sceneName: JumpGame
   - progress: 6
     sceneName: RoadMapMenu
   - progress: 7
-    sceneName: Quiz-1-1
+    sceneName: Quiz-3
   - progress: 8
     sceneName: RunGame
   - progress: 9
     sceneName: RoadMapMenu
   - progress: 10
-    sceneName: Quiz-1-1
+    sceneName: Quiz-4
   - progress: 11
     sceneName: RunGame
   - progress: 12
     sceneName: RoadMapMenu
   - progress: 13
-    sceneName: Quiz-1-1
+    sceneName: Quiz-5
   - progress: 14
     sceneName: RunGame
   - progress: 15
     sceneName: RoadMapMenu
   - progress: 16
-    sceneName: Quiz-1-1
+    sceneName: Quiz-6
   - progress: 17
     sceneName: RunGame
   - progress: 18
     sceneName: RoadMapMenu
   - progress: 19
-    sceneName: Quiz-1-1
+    sceneName: Quiz-7
   - progress: 20
     sceneName: RunGame
   - progress: 21

@@ -23,4 +23,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/JumpGame.unity
     guid: 91921efa07bd4134d9de1bb717ef8470
+  - enabled: 1
+    path: Assets/Scenes/Quiz-2.unity
+    guid: a603cec4d414d564cabdf80baf8356e4
+  - enabled: 1
+    path: Assets/Scenes/Quiz-3.unity
+    guid: f9c586edba8f4ea4c9558922fff342b5
+  - enabled: 1
+    path: Assets/Scenes/Quiz-4.unity
+    guid: 7f3845e582bc7f848b49a92a7de9aa85
+  - enabled: 1
+    path: Assets/Scenes/Quiz-5.unity
+    guid: b1f4a4f9f01006642be589d1086e38a7
+  - enabled: 1
+    path: Assets/Scenes/Quiz-6.unity
+    guid: cd62b0257b337604998a63a8d887296a
+  - enabled: 1
+    path: Assets/Scenes/Quiz-7.unity
+    guid: f65727e6faa1eaf439d80bfb7a65e633
   m_configObjects: {}

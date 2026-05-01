@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -14,6 +15,7 @@ public class SliderCarousel : MonoBehaviour
     public bool isStepStyle;
     public UnityEvent onOkClick;
     public UnityEvent onLastSlideAction;
+    public OrigamiConfig origamiConfig;
 
     private Button leftButton;
     private Button rightButton;
@@ -26,9 +28,7 @@ public class SliderCarousel : MonoBehaviour
 
     void Awake()
     {
-        CollectSlides();
-        InitButtons();
-        ToSlide(0);
+        Load();
     }
 
     public void Close()
@@ -42,6 +42,18 @@ public class SliderCarousel : MonoBehaviour
         gameObject.SetActive(true);
     }
 
+    private void Load()
+    {
+        if (origamiConfig != null)
+        {
+            CreateOrigamiSlides();
+        }
+        
+        CollectSlides();
+        InitButtons();
+        ToSlide(0);
+    }
+    
     private void InitButtons()
     {
         GameObject navigation = null;
@@ -108,6 +120,12 @@ public class SliderCarousel : MonoBehaviour
         for (int i = 0; i < parent.childCount; i++)
         {
             Transform child = parent.GetChild(i);
+
+            if (ExtractNumber(child.name) == 0)
+            {
+                continue;
+            }
+
             slides.Add(child.gameObject);
             child.gameObject.SetActive(false);
         }
@@ -205,8 +223,41 @@ public class SliderCarousel : MonoBehaviour
     }
 
     void OnDestroy() {
-        leftButton.onClick.RemoveAllListeners();
-        rightButton.onClick.RemoveAllListeners();
-        okButton.onClick.RemoveAllListeners();
+        Button[] btns = {leftButton, rightButton, okButton};
+
+        foreach (Button item in btns)
+        {
+            if (item != null)
+            {
+                item.onClick.RemoveAllListeners();
+            }
+        }
+    }
+
+    private void CreateOrigamiSlides()
+    {
+        GameObject slide = slidesObject.transform.GetChild(0).gameObject;
+        
+        string folder = origamiConfig.folder;
+        int quantity = origamiConfig.items.Count;
+        List<GameObject> newSlides = new List<GameObject>();
+
+        for (int i = 0; i < quantity; i++)
+        {
+            GameObject newSlide = Instantiate(slide, slidesObject.transform);
+            newSlide.name = "Slide-" + (i + 1);
+
+            Image imageInstruction = newSlide.transform.GetChild(0).GetChild(1).GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<Image>();
+            Text textInstruction = newSlide.transform.GetChild(0).GetChild(1).GetChild(1).GetChild(0).gameObject.GetComponent<Text>();
+
+            string fileName = origamiConfig.items[i].fileName;
+
+            imageInstruction.sprite = Resources.Load<Sprite>($"Origamin/{folder}/{fileName}");
+            textInstruction.text = origamiConfig.items[i].text;
+
+            newSlides.Add(newSlide);
+        }
+
+        Destroy(slide);
     }
 }

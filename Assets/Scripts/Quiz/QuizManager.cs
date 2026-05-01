@@ -38,8 +38,6 @@ public class QuizManager : MonoBehaviour
 
     public void OpenAllButton()
     {
-        Debug.Log(answers.Count);
-        
         foreach (AnswerButtonStateManager item in answers)
         {
             item.ToAvailabledState();

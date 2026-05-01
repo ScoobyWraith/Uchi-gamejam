@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 3935088943428448733}
   - component: {fileID: 8181150340527536290}
   m_Layer: 5
-  m_Name: Image
+  m_Name: PaperInstruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 6252529486430714022}
   - component: {fileID: 707620552603906290}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: TextInstruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

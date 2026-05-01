@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e2de279c74cd53489ca27cbb17ae004, type: 3}
+  m_Name: Fox
+  m_EditorClassIdentifier: 
+  folder: origami_fox
+  items:
+  - fileName: origami_fox_01
+    text: "Возьми квадратный лист бумаги. Сложи его пополам по диагонали и разверни."
+  - fileName: origami_fox_02
+    text: "Сложи лист пополам по другой диагонали."
+  - fileName: origami_fox_03
+    text: "Загни оба нижних края так, чтобы они совпали с центральной складкой."
+  - fileName: origami_fox_04
+    text: "Согни левую часть листа назад, сделав складку “гора” — это как будто складываешь бумагу по линии, чтобы вершина сгиба смотрела вверх, а края — вниз»"
+  - fileName: origami_fox_05
+    text: "Поверни согнутый лист по часовой стрелке примерно на 45°."
+  - fileName: origami_fox_06
+    text: "Загни правый край верхнего лоскута влево вдоль пунктирной линии, чтобы получилось одно из ушей животного."
+  - fileName: origami_fox_07
+    text: "Открой средний лоскут и расправь его по центру, чтобы получилась голова животного."
+  - fileName: origami_fox_08
+    text: "Загни левый угол внутрь по пунктирным линиям, чтобы придать форму для хвоста животного."
+  - fileName: origami_fox_09
+    text: "Какое животное у тебя получилось?"
