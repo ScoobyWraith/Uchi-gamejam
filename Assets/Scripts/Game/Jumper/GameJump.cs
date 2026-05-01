@@ -42,13 +42,11 @@ public class GameJump : MonoBehaviour
     private float mapLength;
     private float noEnemyDistance;
 
-    public void Start()
+    public void Awake()
     {
         mainCamera = Camera.main;
         
-        LoadSettings();
-        LoadGame();
-        ScenesLoader.SceneLoaded();
+        StartCoroutine(Load());
     }
 
     public void FixedUpdate()
@@ -68,6 +66,15 @@ public class GameJump : MonoBehaviour
             StopGame();
             winModal.OpenModal();
         }
+    }
+
+    private IEnumerator Load()
+    {
+        yield return null;
+
+        LoadSettings();
+        LoadGame();
+        ScenesLoader.SceneLoaded();
     }
 
     public void StartGame()
@@ -372,6 +379,12 @@ public class GameJump : MonoBehaviour
 
     private void LoadNewBreaks()
     {
+        if (playerWidth == 0)
+        {
+            Debug.LogWarning("Ошибка величины персонажа");
+            return;
+        }
+        
         Vector2 screenSize = GetScreenSize();
         
         while(mapLength < screenSize.x * 1.5)

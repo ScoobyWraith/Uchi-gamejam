@@ -27,7 +27,7 @@ public class PlayerJump : MonoBehaviour
     private Vector3 initPosition;
     private bool isHitted;
 
-    void Start()
+    void Awake()
     {
         mainCamera = Camera.main;
         rb = GetComponent<Rigidbody2D>();

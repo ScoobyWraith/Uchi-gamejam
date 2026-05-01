@@ -190,7 +190,7 @@ MonoBehaviour:
         m_RotationOrder: 4
       playerJump: 30
       platformDistanceFromBottom: 0.3
-      backName: river
-      playerName: croc
+      backName: island
+      playerName: fox
       enemiesName: pool-1
       platformName: platform
