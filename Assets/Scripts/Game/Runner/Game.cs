@@ -289,6 +289,7 @@ public class Game : MonoBehaviour
         SpriteRenderer spriteRenderer = player.GetComponent<SpriteRenderer>();
         playerWidth = spriteRenderer.sprite.bounds.size.x;
         player.SeteOnHit(HitPlayer);
+        player.gameObject.SetActive(true);
     }
 
     private void ShowTimerInHUD()
@@ -299,7 +300,7 @@ public class Game : MonoBehaviour
 
     private void MoveBackground()
     {
-        float deltaX = -getCurrentDeltaX();
+        float deltaX = -getCurrentDeltaX() * gameSettings.backgroundSpeedScale;
 
         background1.localPosition += new Vector3(deltaX, 0, 0);
         background2.localPosition += new Vector3(deltaX, 0, 0);

@@ -13,7 +13,7 @@ public class JumpGameSettings
     public AnimationCurve maxHoleSize;
     public AnimationCurve minBreakDistance;
     public AnimationCurve maxBreakDistance;
-
+    public float backgroundSpeedScale = 0.8f;
     public float speed = 10;
     public AnimationCurve speedByTime;
     public float playerJump = 10f;

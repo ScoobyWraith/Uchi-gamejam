@@ -10,6 +10,7 @@ public class RunGameSettings
     public AnimationCurve enemyMinDistanceByTime;
     public AnimationCurve enemyMaxDistanceByTime;
     public float speed = 10;
+    public float backgroundSpeedScale = 0.8f;
     public AnimationCurve speedByTime;
     public float playerSpeed = 10;
     public int rows = 3;

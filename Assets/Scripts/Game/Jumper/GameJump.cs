@@ -263,6 +263,7 @@ public class GameJump : MonoBehaviour
             if (child.name.Equals(gameSettings.playerName))
             {
                 p = child;
+                child.SetActive(true);
             } else
             {
                 child.SetActive(false);
@@ -292,11 +293,10 @@ public class GameJump : MonoBehaviour
             if (child.name.Equals(gameSettings.platformName))
             {
                 originalPlatform = child;
-                originalPlatform.SetActive(false);
-            } else
-            {
-                child.SetActive(false);
+         
             }
+
+            child.SetActive(false);
         }
 
         Vector2 screnSize = GetScreenSize();
@@ -316,6 +316,7 @@ public class GameJump : MonoBehaviour
     private void MoveBackground()
     {
         float deltaX = -gameSettings.speed * Time.fixedDeltaTime * GetCurrentCurveValue(gameSettings.speedByTime);
+        deltaX *=  gameSettings.backgroundSpeedScale;
 
         background1.localPosition += new Vector3(deltaX, 0, 0);
         background2.localPosition += new Vector3(deltaX, 0, 0);
@@ -437,9 +438,8 @@ public class GameJump : MonoBehaviour
                         SpriteRenderer spriteRenderer = newBreak.GetComponent<SpriteRenderer>();
                         Vector3 sizes = spriteRenderer.bounds.size;
 
-
                         float cX = curXForBreaks + sizes.x / 2;
-                        float cY = mainY + sizes.y / 2;
+                        float cY = mainY + sizes.y / 2 * 0.9f;
                         newBreak.transform.localPosition = new Vector3(cX, cY, 0);
                         enemies.Add(newBreak);
 

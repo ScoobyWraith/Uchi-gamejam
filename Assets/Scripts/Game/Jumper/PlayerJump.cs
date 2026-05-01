@@ -74,7 +74,10 @@ public class PlayerJump : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        HitPlayer();
+        if (undeathPeriod < 0)
+        {
+            HitPlayer();
+        }
     }
 
     private void HitPlayer() {

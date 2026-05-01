@@ -24,18 +24,18 @@ MonoBehaviour:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 8.127104
-          inSlope: -1.711356
-          outSlope: -1.711356
+          value: 8.979185
+          inSlope: -1.7252558
+          outSlope: -1.7252558
           tangentMode: 0
           weightedMode: 3
           inWeight: 0
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
-          value: 3.4255524
-          inSlope: -1.711356
-          outSlope: -1.711356
+          value: 4.5210724
+          inSlope: -1.7252558
+          outSlope: -1.7252558
           tangentMode: 0
           weightedMode: 3
           inWeight: 0.33333334
@@ -48,18 +48,18 @@ MonoBehaviour:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 9.244431
-          inSlope: -0.25261238
-          outSlope: -0.25261238
+          value: 9.816299
+          inSlope: -0.25309223
+          outSlope: -0.25309223
           tangentMode: 0
           weightedMode: 3
           inWeight: 0
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
-          value: 6.951721
-          inSlope: -0.25261238
-          outSlope: -0.25261238
+          value: 7.5011597
+          inSlope: -0.25309223
+          outSlope: -0.25309223
           tangentMode: 0
           weightedMode: 3
           inWeight: 0.33333334
@@ -71,19 +71,19 @@ MonoBehaviour:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
-          time: -0.5620117
+          time: 0
           value: 1.043808
-          inSlope: 0.13333127
-          outSlope: 0.13333127
+          inSlope: 0.07744164
+          outSlope: 0.07744164
           tangentMode: 0
           weightedMode: 3
           inWeight: 0
           outWeight: 0.3537484
         - serializedVersion: 3
-          time: 1.1596882
+          time: 1
           value: 1.2769554
-          inSlope: 0.15710656
-          outSlope: 0.15710656
+          inSlope: 0.09125084
+          outSlope: 0.09125084
           tangentMode: 0
           weightedMode: 3
           inWeight: 0.3447441
@@ -95,16 +95,16 @@ MonoBehaviour:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
-          time: -0.06850672
+          time: 0
           value: 2.0376067
-          inSlope: 0.09036252
-          outSlope: 0.09036252
+          inSlope: 0.029559936
+          outSlope: 0.029559936
           tangentMode: 0
           weightedMode: 3
           inWeight: 0
           outWeight: 0.09613708
         - serializedVersion: 3
-          time: 2.9884186
+          time: 1
           value: 2.4829316
           inSlope: 0
           outSlope: 0
@@ -120,18 +120,18 @@ MonoBehaviour:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 3.003321
-          inSlope: -0.33821246
-          outSlope: -0.33821246
+          value: 3.106951
+          inSlope: -0.33889374
+          outSlope: -0.33889374
           tangentMode: 0
           weightedMode: 3
           inWeight: 0
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
-          value: 2.5161233
-          inSlope: -0.33821246
-          outSlope: -0.33821246
+          value: 2.7082162
+          inSlope: -0.33889374
+          outSlope: -0.33889374
           tangentMode: 0
           weightedMode: 3
           inWeight: 0.33333334
@@ -144,18 +144,18 @@ MonoBehaviour:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 3.992775
-          inSlope: -0.91157615
-          outSlope: -0.91157615
+          value: 4.1763115
+          inSlope: -0.91351366
+          outSlope: -0.91351366
           tangentMode: 0
           weightedMode: 3
           inWeight: 0
           outWeight: 0.55403996
         - serializedVersion: 3
-          time: 0.99572754
-          value: 3.2523808
-          inSlope: -0.73003745
-          outSlope: -0.73003745
+          time: 1
+          value: 3.5949864
+          inSlope: -0.73158914
+          outSlope: -0.73158914
           tangentMode: 0
           weightedMode: 3
           inWeight: 0.5529597
@@ -163,6 +163,7 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
+      backgroundSpeedScale: 0.1
       speed: 10
       speedByTime:
         serializedVersion: 2
@@ -189,8 +190,554 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       playerJump: 30
-      platformDistanceFromBottom: 0.3
-      backName: island
+      platformDistanceFromBottom: 0.2
+      backName: 1-5-7
       playerName: fox
-      enemiesName: pool-1
-      platformName: platform
+      enemiesName: pool-log
+      platformName: 1
+  - progress: 8
+    settings:
+      lives: 3
+      undeathPeriodSeconds: 2
+      gameDurationSeconds: 30
+      noEnemyDurationSeconds: 3
+      minUnholeDistance:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0.0032463074
+          value: 5.1262226
+          inSlope: 2.2628489
+          outSlope: 2.2628489
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.3947923
+        - serializedVersion: 3
+          time: 0.56137085
+          value: 6.0636215
+          inSlope: 2.0999467
+          outSlope: 2.0999467
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.27783012
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      maxUnholeDistance:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 9.816299
+          inSlope: -0.25309223
+          outSlope: -0.25309223
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 7.5011597
+          inSlope: -0.25309223
+          outSlope: -0.25309223
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33333334
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minHoleSize:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: -0.0036964417
+          value: 1.2672272
+          inSlope: 0.07760209
+          outSlope: 0.07760209
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.3537484
+        - serializedVersion: 3
+          time: 1
+          value: 1.3701255
+          inSlope: 0.091439895
+          outSlope: 0.091439895
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.3447441
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      maxHoleSize:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 2.1634307
+          inSlope: 0.029732268
+          outSlope: 0.029732268
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.09613708
+        - serializedVersion: 3
+          time: 1
+          value: 2.8120775
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minBreakDistance:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 3.7218406
+          inSlope: -0.33707383
+          outSlope: -0.33707383
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 3.2345834
+          inSlope: -0.33707383
+          outSlope: -0.33707383
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33333334
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      maxBreakDistance:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 4.906994
+          inSlope: -0.88072956
+          outSlope: -0.88072956
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.55403996
+        - serializedVersion: 3
+          time: 1
+          value: 4.2085423
+          inSlope: -0.70533395
+          outSlope: -0.70533395
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.5529597
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      backgroundSpeedScale: 0.1
+      speed: 10
+      speedByTime:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0.7341183
+          outSlope: 0.7341183
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 1.7583313
+          inSlope: 0.7341183
+          outSlope: 0.7341183
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33333334
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      playerJump: 30
+      platformDistanceFromBottom: 0.2
+      backName: 3
+      playerName: dog
+      enemiesName: pool-stone
+      platformName: 3
+  - progress: 14
+    settings:
+      lives: 3
+      undeathPeriodSeconds: 2
+      gameDurationSeconds: 30
+      noEnemyDurationSeconds: 3
+      minUnholeDistance:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 8.979185
+          inSlope: -1.7252558
+          outSlope: -1.7252558
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 4.5210724
+          inSlope: -1.7252558
+          outSlope: -1.7252558
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33333334
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      maxUnholeDistance:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 9.816299
+          inSlope: -0.25309223
+          outSlope: -0.25309223
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 7.5011597
+          inSlope: -0.25309223
+          outSlope: -0.25309223
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33333334
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minHoleSize:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: -0.0036964417
+          value: 1.2672272
+          inSlope: 0.07760209
+          outSlope: 0.07760209
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.3537484
+        - serializedVersion: 3
+          time: 1
+          value: 1.3701255
+          inSlope: 0.091439895
+          outSlope: 0.091439895
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.3447441
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      maxHoleSize:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 2.1634307
+          inSlope: 0.029732268
+          outSlope: 0.029732268
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.09613708
+        - serializedVersion: 3
+          time: 1
+          value: 2.8120775
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minBreakDistance:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 3.7218406
+          inSlope: -0.33707383
+          outSlope: -0.33707383
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 3.2345834
+          inSlope: -0.33707383
+          outSlope: -0.33707383
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33333334
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      maxBreakDistance:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 4.906994
+          inSlope: -0.88072956
+          outSlope: -0.88072956
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.55403996
+        - serializedVersion: 3
+          time: 1
+          value: 4.2085423
+          inSlope: -0.70533395
+          outSlope: -0.70533395
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.5529597
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      backgroundSpeedScale: 0.1
+      speed: 10
+      speedByTime:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0.7341183
+          outSlope: 0.7341183
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 1.7583313
+          inSlope: 0.7341183
+          outSlope: 0.7341183
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33333334
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      playerJump: 30
+      platformDistanceFromBottom: 0.2
+      backName: 1-5-7
+      playerName: frog
+      enemiesName: pool-log
+      platformName: 5
+  - progress: 20
+    settings:
+      lives: 3
+      undeathPeriodSeconds: 2
+      gameDurationSeconds: 30
+      noEnemyDurationSeconds: 3
+      minUnholeDistance:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 8.979185
+          inSlope: -1.7252558
+          outSlope: -1.7252558
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 4.5210724
+          inSlope: -1.7252558
+          outSlope: -1.7252558
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33333334
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      maxUnholeDistance:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 9.816299
+          inSlope: -0.25309223
+          outSlope: -0.25309223
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 7.5011597
+          inSlope: -0.25309223
+          outSlope: -0.25309223
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33333334
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minHoleSize:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1.2672272
+          inSlope: 0.07731629
+          outSlope: 0.07731629
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.3537484
+        - serializedVersion: 3
+          time: 1
+          value: 1.3701255
+          inSlope: 0.09110314
+          outSlope: 0.09110314
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.3447441
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      maxHoleSize:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 2.1634307
+          inSlope: 0.029732268
+          outSlope: 0.029732268
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.09613708
+        - serializedVersion: 3
+          time: 1
+          value: 2.8120775
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minBreakDistance:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 3.7218406
+          inSlope: -0.33707383
+          outSlope: -0.33707383
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 3.2345834
+          inSlope: -0.33707383
+          outSlope: -0.33707383
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33333334
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      maxBreakDistance:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 4.906994
+          inSlope: -0.88072956
+          outSlope: -0.88072956
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.55403996
+        - serializedVersion: 3
+          time: 1
+          value: 4.2085423
+          inSlope: -0.70533395
+          outSlope: -0.70533395
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.5529597
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      backgroundSpeedScale: 0.1
+      speed: 10
+      speedByTime:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0.7341183
+          outSlope: 0.7341183
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 1.7583313
+          inSlope: 0.7341183
+          outSlope: 0.7341183
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33333334
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      playerJump: 30
+      platformDistanceFromBottom: 0.2
+      backName: 1-5-7
+      playerName: rabbit
+      enemiesName: pool-stone
+      platformName: 7
