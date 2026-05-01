@@ -13,6 +13,7 @@ public class SliderCarousel : MonoBehaviour
     public bool useOk = true;
     public bool isStepStyle;
     public UnityEvent onOkClick;
+    public UnityEvent onLastSlideAction;
 
     private Button leftButton;
     private Button rightButton;
@@ -87,7 +88,6 @@ public class SliderCarousel : MonoBehaviour
         leftButton.onClick.AddListener(OnLeftClick);
         rightButton.onClick.AddListener(OnRightClick);
 
-        okButton.onClick.AddListener(Close);
         okButton.onClick.AddListener(() => onOkClick.Invoke());
     }
     
@@ -125,6 +125,12 @@ public class SliderCarousel : MonoBehaviour
         }
 
         slides[currentSlide].SetActive(true);
+
+        if (currentSlide == slides.Count - 1)
+        {
+            onLastSlideAction?.Invoke();
+        }
+
         UpdateButtons();
     }
 

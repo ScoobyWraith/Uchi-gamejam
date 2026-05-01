@@ -4,25 +4,17 @@ using UnityEngine;
 
 public class QuizManager : MonoBehaviour
 {
-    public GameObject Answers;
+    public GameObject answersObject;
+    public AnswerButtonStateManager correctAnswer;
 
-    public ModalView WrongAnswerModal;
-    public ModalView CorrectAnswerModal;
+    public ModalView wrongAnswerModal;
+    public ModalView correctAnswerModal;
 
-    private List<QuizButton> answers = new List<QuizButton>();
+    private List<AnswerButtonStateManager> answers = new List<AnswerButtonStateManager>();
 
     public void Start()
     {
-        LoadSlides();
-        ScenesLoader.SceneLoaded();
-    }
-
-    public void reset()
-    {
-        foreach(QuizButton button in answers)
-        {
-            button.reset();
-        }
+        StartCoroutine(Load());
     }
 
     public void CompleteQuiz()
@@ -34,27 +26,52 @@ public class QuizManager : MonoBehaviour
         levelsLoader.LoadLevelByProgress();
     }
 
-    private void LoadSlides()
+    public void ShowCorrectDialog()
     {
-        Transform parent = Answers.transform;
+        correctAnswerModal.OpenModal();
+    }
 
-        for (int i = 0; i < parent.childCount; i++)
+    public void ShowUncorrectDialog()
+    {
+        wrongAnswerModal.OpenModal();
+    }
+
+    public void OpenAllButton()
+    {
+        Debug.Log(answers.Count);
+        
+        foreach (AnswerButtonStateManager item in answers)
         {
-            Transform child = parent.GetChild(i);
-            QuizButton quizButton = child.gameObject.GetComponent<QuizButton>();
-            answers.Add(quizButton);
+            item.ToAvailabledState();
+        }
+    }
+    
+    private IEnumerator Load()
+    {
+        yield return null;
+        
+        LoadButtons();
+        ScenesLoader.SceneLoaded();
+    }
 
-            if (!quizButton.IsCorrect)
+    private void LoadButtons()
+    {
+        AnswerButtonStateManager[] ans = answersObject.GetComponentsInChildren<AnswerButtonStateManager>();
+
+        foreach (AnswerButtonStateManager item in ans)
+        {
+            answers.Add(item);
+            
+            if (item.Equals(correctAnswer))
             {
-                quizButton.getButton().onClick.AddListener(() => {
-                    WrongAnswerModal.OpenModal();
-                });
-            } else
-            {
-                quizButton.getButton().onClick.AddListener(() => {
-                    CorrectAnswerModal.OpenModal();
-                });
+                item.AddButtonClickListener(ShowCorrectDialog);
             }
+            else
+            {
+                item.AddButtonClickListener(ShowUncorrectDialog);
+            }
+
+            item.ToBlockedState();
         }
     }
 }
