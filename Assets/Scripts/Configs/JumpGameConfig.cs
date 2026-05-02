@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 [CreateAssetMenu(fileName = "JumpGameConfig", menuName = "Configs/Jump Game Config")]
 public class JumpGameConfig : ScriptableObject
@@ -15,6 +16,8 @@ public class JumpGameConfig : ScriptableObject
     
     public JumpGameSettings GetSettingsByProgress(int progress)
     {
+        Assert.AreNotEqual(0, items.Count, "Список настроек JumpGameConfig пуст");
+        
         SettingsByProgress result = items[0];
 
         foreach(SettingsByProgress settingsByProgress in items)

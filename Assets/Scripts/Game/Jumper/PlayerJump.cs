@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerJump : MonoBehaviour
@@ -11,7 +9,6 @@ public class PlayerJump : MonoBehaviour
     private float undeathPeriod;
     private JumpGameSettings gameSettings;
     private bool isRun = false;
-    private float distance;
     private Animator animator;
     private BoxCollider2D collider2d;
     private string normalBool = "normal";
@@ -25,7 +22,6 @@ public class PlayerJump : MonoBehaviour
     private bool isGrounded;
     private Camera mainCamera;
     private Vector3 initPosition;
-    private bool isHitted;
 
     void Awake()
     {
@@ -37,7 +33,6 @@ public class PlayerJump : MonoBehaviour
         initPosition = transform.localPosition;
 
         rb.bodyType = RigidbodyType2D.Static;
-        isHitted = false;
     }
 
     public void LoadPlayer(JumpGameSettings gameSettings)
@@ -53,10 +48,8 @@ public class PlayerJump : MonoBehaviour
     public void StartPlayer()
     {
         isRun = true;
-        distance = 0;
         undeathPeriod = -1;
         rb.bodyType = RigidbodyType2D.Dynamic;
-        isHitted = false;
     }
 
     public void StopPlayer()
@@ -64,7 +57,6 @@ public class PlayerJump : MonoBehaviour
         isRun = false;
         UndeathOff();
         rb.bodyType = RigidbodyType2D.Static;
-        isHitted = false;
     }
 
     public float GetWidth()

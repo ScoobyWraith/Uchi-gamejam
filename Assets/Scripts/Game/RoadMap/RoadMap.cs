@@ -14,6 +14,13 @@ public class RoadMap : MonoBehaviour
    
     public void Start()
     {
+        StartCoroutine(Load());
+    }
+
+    private IEnumerator Load()
+    {
+        yield return null;
+        
         Transform parent = islandsPool.transform;
         
         for (int i = 0; i < parent.childCount; i++)

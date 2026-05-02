@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 [CreateAssetMenu(fileName = "RunGameConfig", menuName = "Configs/Run Game Config")]
 public class RunGameConfig : ScriptableObject
@@ -16,6 +17,8 @@ public class RunGameConfig : ScriptableObject
     
     public RunGameSettings GetSettingsByProgress(int progress)
     {
+        Assert.AreNotEqual(0, items.Count, "Список настроек RunGameConfig пуст");
+        
         SettingsByProgress result = items[0];
 
         foreach(SettingsByProgress settingsByProgress in items)

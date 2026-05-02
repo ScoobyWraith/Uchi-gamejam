@@ -1,7 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Assertions;
+
 
 [CreateAssetMenu(fileName = "RoudmapPopupsConfig", menuName = "Configs/Roudmap Popups Config")]
 public class RoudmapPopupsConfig : ScriptableObject
@@ -18,6 +18,8 @@ public class RoudmapPopupsConfig : ScriptableObject
 
     public string GetPopupName(int progress)
     {
+        Assert.AreNotEqual(0, items.Count, "Список настроек RoudmapPopupsConfig пуст");
+        
         Settings result = items[0];
 
         foreach(Settings settingsByProgress in items)
