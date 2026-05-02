@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -36,6 +37,13 @@ public class Game : MonoBehaviour
     {
         mainCamera = Camera.main;
         
+        StartCoroutine(Load());
+    }
+
+    private IEnumerator Load()
+    {
+        yield return null;
+
         LoadSettings();
         LoadGame();
         ScenesLoader.SceneLoaded();
