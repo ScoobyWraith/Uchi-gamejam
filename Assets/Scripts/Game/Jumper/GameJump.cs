@@ -14,6 +14,7 @@ public class GameJump : MonoBehaviour
     public GameObject backsObject;
     public GameObject playersObject;
     public GameObject enemiesObject;
+    public GameObject endLevelObjects;
     public JumpGameConfig jumpGameConfig;
     public float cheatTime = 0;
 
@@ -37,6 +38,8 @@ public class GameJump : MonoBehaviour
     private System.Random rnd;
     private float mapLength;
     private float noEnemyDistance;
+    private Transform endLevelObject;
+    private Vector3 originalEndLevelObjectPosition;
 
     public void Awake()
     {
@@ -55,6 +58,7 @@ public class GameJump : MonoBehaviour
         timer += Time.fixedDeltaTime;
         MoveBackground();
         MoveBreaks();
+        MoveEndLevelObject();
         ShowTimerInHUD();
 
         if (timer > gameSettings.gameDurationSeconds)
@@ -70,7 +74,7 @@ public class GameJump : MonoBehaviour
 
         LoadSettings();
         LoadGame();
-        
+
         yield return null;
 
         ScenesLoader.SceneLoaded();
@@ -131,7 +135,44 @@ public class GameJump : MonoBehaviour
         LoadEnemies();
         LoadPlatforms();
         LoadNewBreaks();
+        LoadEndLevelObject();
         LoadHUD();
+    }
+
+    private void LoadEndLevelObject()
+    {
+        if (endLevelObject == null)
+        {
+            Transform parent = endLevelObjects.transform;
+
+            for (int i = 0; i < parent.childCount; i++)
+            {
+                Transform child = parent.GetChild(i);
+
+                if (child.name.Equals(gameSettings.endLevelObjectName))
+                {
+                    child.gameObject.SetActive(true);
+                    endLevelObject = child;
+                } else
+                {
+                    child.gameObject.SetActive(false);
+                }
+            }
+
+            SpriteRenderer spriteRenderer = endLevelObject.GetComponent<SpriteRenderer>();
+            Vector3 vv = endLevelObject.transform.localPosition;
+            float y = mainY + spriteRenderer.bounds.size.y / 2;
+            endLevelObject.transform.localPosition = new Vector3(vv.x, y, vv.z);
+            
+            originalEndLevelObjectPosition = endLevelObject.transform.localPosition;
+        }
+
+        float t = gameSettings.gameDurationSeconds;
+        float v = gameSettings.speed;
+        float a = (gameSettings.speedByTime.Evaluate(1) - gameSettings.speedByTime.Evaluate(0)) / t;
+        float x = v * t + a * t * t / 2;
+
+        endLevelObject.localPosition = originalEndLevelObjectPosition + new Vector3(x, 0, 0);
     }
 
     private void CalcMainY()
@@ -349,6 +390,13 @@ public class GameJump : MonoBehaviour
         LoadNewBreaks();
     }
 
+    private void MoveEndLevelObject()
+    {
+        float deltaX = -gameSettings.speed * Time.fixedDeltaTime * GetCurrentCurveValue(gameSettings.speedByTime);
+
+        endLevelObject.localPosition += new Vector3(deltaX, 0, 0);
+    }
+
     private void DestroyUnavailable()
     {
         Vector2 screenSize = GetScreenSize();
@@ -438,7 +486,7 @@ public class GameJump : MonoBehaviour
                         Vector3 sizes = spriteRenderer.bounds.size;
 
                         float cX = curXForBreaks + sizes.x / 2;
-                        float cY = mainY + sizes.y / 2 * 0.7f;
+                        float cY = mainY + sizes.y / 2 * 0.75f;
                         newBreak.transform.localPosition = new Vector3(cX, cY, 0);
                         enemies.Add(newBreak);
 

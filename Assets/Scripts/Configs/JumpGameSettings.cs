@@ -22,4 +22,5 @@ public class JumpGameSettings
     public string playerName = "crok";
     public string enemiesName = "pool-1";
     public string platformName = "platform";
+    public string endLevelObjectName = "flag";
 }

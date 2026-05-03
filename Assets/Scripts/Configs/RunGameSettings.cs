@@ -17,4 +17,5 @@ public class RunGameSettings
     public string backName = "river";
     public string playerName = "crok";
     public string enemiesName = "pool-1";
+    public string endLevelObjectName = "flag";
 }

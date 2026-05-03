@@ -13,6 +13,7 @@ public class Game : MonoBehaviour
     public GameObject backsObject;
     public GameObject playersObject;
     public GameObject enemiesObject;
+    public GameObject endLevelObjects;
     public RunGameConfig runGameConfig;
     public float cheatTime = 0;
     
@@ -32,6 +33,8 @@ public class Game : MonoBehaviour
     private float backgroundWidth;
     private float playerWidth;
     private System.Random rnd;
+    private Transform endLevelObject;
+    private Vector3 originalEndLevelObjectPosition;
 
     public void Start()
     {
@@ -48,7 +51,7 @@ public class Game : MonoBehaviour
         LoadGame();
 
         yield return null;
-        
+
         ScenesLoader.SceneLoaded();
     }
 
@@ -62,6 +65,7 @@ public class Game : MonoBehaviour
         timer += Time.fixedDeltaTime;
         MoveBackground();
         MoveEnemies();
+        MoveEndLevelObject();
         ShowTimerInHUD();
 
         if (timer > gameSettings.gameDurationSeconds)
@@ -121,7 +125,41 @@ public class Game : MonoBehaviour
         LoadBackgrounds();
         LoadPlayer();
         LoadEnemies();
+        LoadEndLevelObject();
         LoadHUD();
+    }
+
+    private void LoadEndLevelObject()
+    {
+        if (endLevelObject == null)
+        {
+            Transform parent = endLevelObjects.transform;
+
+            for (int i = 0; i < parent.childCount; i++)
+            {
+                Transform child = parent.GetChild(i);
+
+                if (child.name.Equals(gameSettings.endLevelObjectName))
+                {
+                    child.gameObject.SetActive(true);
+                    endLevelObject = child;
+                } else
+                {
+                    child.gameObject.SetActive(false);
+                }
+            }
+
+            originalEndLevelObjectPosition = endLevelObject.transform.localPosition;
+        }
+
+        
+        
+        float t = gameSettings.gameDurationSeconds;
+        float v = gameSettings.speed;
+        float a = (gameSettings.speedByTime.Evaluate(1) - gameSettings.speedByTime.Evaluate(0)) / t;
+        float x = v * t + a * t * t / 2;
+
+        endLevelObject.localPosition = originalEndLevelObjectPosition + new Vector3(x, 0, 0);
     }
 
     private void LoadHUD()
@@ -318,6 +356,13 @@ public class Game : MonoBehaviour
             background1 = background2;
             background2 = tmp;
         }
+    }
+
+    private void MoveEndLevelObject()
+    {
+        float deltaX = -getCurrentDeltaX();
+
+        endLevelObject.localPosition += new Vector3(deltaX, 0, 0);
     }
 
     private void MoveEnemies()
