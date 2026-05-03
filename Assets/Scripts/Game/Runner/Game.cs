@@ -46,6 +46,9 @@ public class Game : MonoBehaviour
 
         LoadSettings();
         LoadGame();
+
+        yield return null;
+        
         ScenesLoader.SceneLoaded();
     }
 

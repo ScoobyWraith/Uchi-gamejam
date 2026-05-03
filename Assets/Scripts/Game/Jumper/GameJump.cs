@@ -70,6 +70,9 @@ public class GameJump : MonoBehaviour
 
         LoadSettings();
         LoadGame();
+        
+        yield return null;
+
         ScenesLoader.SceneLoaded();
     }
 
@@ -435,7 +438,7 @@ public class GameJump : MonoBehaviour
                         Vector3 sizes = spriteRenderer.bounds.size;
 
                         float cX = curXForBreaks + sizes.x / 2;
-                        float cY = mainY + sizes.y / 2 * 0.9f;
+                        float cY = mainY + sizes.y / 2 * 0.7f;
                         newBreak.transform.localPosition = new Vector3(cX, cY, 0);
                         enemies.Add(newBreak);
 
