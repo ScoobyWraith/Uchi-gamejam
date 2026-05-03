@@ -55,6 +55,12 @@ public class LevelsLoader : MonoBehaviour
         GlobalGame globalGame = GlobalGame.GetInstance();
         
         globalGame.IncProgress();
+
+        if (globalGame.skipQuiz)
+        {
+            globalGame.IncProgress();
+        }
+
         LoadLevelByProgress();
     }
 

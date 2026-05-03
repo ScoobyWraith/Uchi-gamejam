@@ -5,6 +5,7 @@ public class GlobalGame : MonoBehaviour
     private static GlobalGame instance;
     
     public int initProgress = 0;
+    public bool skipQuiz = false;
     
     private int currentProgress = 0;
 

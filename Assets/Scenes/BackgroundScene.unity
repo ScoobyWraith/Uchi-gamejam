@@ -828,6 +828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initProgress: 0
+  skipQuiz: 1
 --- !u!4 &1622030807
 Transform:
   m_ObjectHideFlags: 0

@@ -15,6 +15,7 @@ public class PlayerJump : MonoBehaviour
     private string upBool = "up";
     private string downBool = "down";
     private string damageBool = "damage";
+    private string runSpeedName = "RunSpeed";
     private Action onHit;
     private float playerWidth;
     private float groundCheckRadius = 0.2f;
@@ -33,6 +34,7 @@ public class PlayerJump : MonoBehaviour
         initPosition = transform.localPosition;
 
         rb.bodyType = RigidbodyType2D.Static;
+        SetRunning(0);
     }
 
     public void LoadPlayer(JumpGameSettings gameSettings)
@@ -50,6 +52,7 @@ public class PlayerJump : MonoBehaviour
         isRun = true;
         undeathPeriod = -1;
         rb.bodyType = RigidbodyType2D.Dynamic;
+        SetRunning(1);
     }
 
     public void StopPlayer()
@@ -57,6 +60,7 @@ public class PlayerJump : MonoBehaviour
         isRun = false;
         UndeathOff();
         rb.bodyType = RigidbodyType2D.Static;
+        SetRunning(0);
     }
 
     public float GetWidth()
@@ -106,10 +110,19 @@ public class PlayerJump : MonoBehaviour
         }
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-        
-        if (Input.GetButtonDown("Jump") && isGrounded)
+
+        if (isGrounded)
         {
-            Jump();
+            SetRunning(1);
+
+            if (Input.GetButtonDown("Jump"))
+            {
+                Jump();
+            }
+        } 
+        else
+        {
+            SetRunning(0.4f);
         }
     }
 
@@ -144,6 +157,11 @@ public class PlayerJump : MonoBehaviour
         animator.SetBool(normalBool, true);
         animator.SetBool(upBool, false);
         animator.SetBool(downBool, false);
+    }
+
+    private void SetRunning(float scale)
+    {
+        animator.SetFloat(runSpeedName, scale);
     }
 
     private void UndeathOn()

@@ -17,12 +17,14 @@ public class Player : MonoBehaviour
     private string upBool = "up";
     private string downBool = "down";
     private string damageBool = "damage";
+    private string runSpeedName = "MovingSpeed";
     private Action onHit;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         collider2d = GetComponent<BoxCollider2D>();
+        SetMoving(0);
     }
 
     public void LoadPlayer(List<float> positions, RunGameSettings gameSettings)
@@ -46,12 +48,14 @@ public class Player : MonoBehaviour
         isRun = true;
         distance = 0;
         undeathPeriod = -1;
+        SetMoving(1);
     }
 
     public void StopPlayer()
     {
         isRun = false;
         UndeathOff();
+        SetMoving(0);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -171,5 +175,10 @@ public class Player : MonoBehaviour
     {
         animator.SetBool(damageBool, false);
         collider2d.enabled = true;
+    }
+
+    private void SetMoving(float scale)
+    {
+        animator.SetFloat(runSpeedName, scale);
     }
 }

@@ -349,8 +349,9 @@ public class Game : MonoBehaviour
 
             for (int i = 0; i < quantity; i++)
             {
-                pool[i].localPosition = new Vector3(lastEnemy.localPosition.x + distace, positions[i], 0);
-                lastEnemy = pool[i];
+                int enemyindex = Mathf.Min(i, pool.Count - 1);
+                pool[enemyindex].localPosition = new Vector3(lastEnemy.localPosition.x + distace, positions[i], 0);
+                lastEnemy = pool[enemyindex];
             }
         }
     }

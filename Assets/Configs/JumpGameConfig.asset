@@ -17,7 +17,7 @@ MonoBehaviour:
     settings:
       lives: 3
       undeathPeriodSeconds: 2
-      gameDurationSeconds: 30
+      gameDurationSeconds: 7
       noEnemyDurationSeconds: 3
       minUnholeDistance:
         serializedVersion: 2
