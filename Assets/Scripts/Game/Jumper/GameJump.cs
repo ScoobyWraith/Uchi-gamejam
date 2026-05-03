@@ -161,7 +161,7 @@ public class GameJump : MonoBehaviour
 
             SpriteRenderer spriteRenderer = endLevelObject.GetComponent<SpriteRenderer>();
             Vector3 vv = endLevelObject.transform.localPosition;
-            float y = mainY + spriteRenderer.bounds.size.y / 2;
+            float y = mainY + spriteRenderer.bounds.size.y / 2 * 0.85f;
             endLevelObject.transform.localPosition = new Vector3(vv.x, y, vv.z);
             
             originalEndLevelObjectPosition = endLevelObject.transform.localPosition;
@@ -486,7 +486,7 @@ public class GameJump : MonoBehaviour
                         Vector3 sizes = spriteRenderer.bounds.size;
 
                         float cX = curXForBreaks + sizes.x / 2;
-                        float cY = mainY + sizes.y / 2 * 0.75f;
+                        float cY = mainY + sizes.y / 2 * 0.7f;
                         newBreak.transform.localPosition = new Vector3(cX, cY, 0);
                         enemies.Add(newBreak);
 

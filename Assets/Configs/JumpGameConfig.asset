@@ -195,7 +195,7 @@ MonoBehaviour:
       playerName: fox
       enemiesName: pool-log
       platformName: 1
-      endLevelObjectName: cap
+      endLevelObjectName: flag
   - progress: 8
     settings:
       lives: 3
@@ -744,4 +744,4 @@ MonoBehaviour:
       playerName: rabbit
       enemiesName: pool-stone
       platformName: 7
-      endLevelObjectName: flag
+      endLevelObjectName: cap
