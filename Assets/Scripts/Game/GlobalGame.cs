@@ -6,6 +6,7 @@ public class GlobalGame : MonoBehaviour
     
     public int initProgress = 0;
     public bool skipQuiz = false;
+    public bool useSavingGame = true;
     
     private int currentProgress = 0;
 
@@ -23,7 +24,15 @@ public class GlobalGame : MonoBehaviour
             return;
         }
 
-        currentProgress = initProgress;
+        if (useSavingGame)
+        {
+            currentProgress = PlayerPrefs.GetInt("playerProgress", 0);
+        }
+        else
+        {
+            currentProgress = initProgress;
+        }
+
         instance = this;
     }
 
@@ -35,5 +44,22 @@ public class GlobalGame : MonoBehaviour
     public void IncProgress()
     {
         currentProgress++;
+
+        if (useSavingGame)
+        {
+            PlayerPrefs.SetInt("playerProgress", currentProgress);
+            PlayerPrefs.Save();
+        }
+    }
+
+    public void ResetGame()
+    {
+        currentProgress = 0;
+
+        if (useSavingGame)
+        {
+            PlayerPrefs.SetInt("playerProgress", currentProgress);
+            PlayerPrefs.Save();
+        }
     }
 }
