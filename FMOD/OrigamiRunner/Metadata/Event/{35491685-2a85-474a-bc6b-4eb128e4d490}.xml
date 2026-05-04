@@ -168,6 +168,7 @@
 			<destination>{89d3b537-9d0c-48fc-a536-9e2705040797}</destination>
 			<destination>{dc264551-4cee-498e-83b8-0be028d83b9c}</destination>
 			<destination>{3e3eb8da-65be-4896-a79e-c7e6bec9e6bd}</destination>
+			<destination>{a980dfea-9560-46c0-9c90-0f7f10091520}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{1acb606a-5b4b-4a2c-97ce-acc4c5fa5062}" />
@@ -204,4 +205,9 @@
 		</property>
 	</object>
 	<object class="FlangerEffect" id="{3e3eb8da-65be-4896-a79e-c7e6bec9e6bd}" />
+	<object class="CompressorEffect" id="{a980dfea-9560-46c0-9c90-0f7f10091520}">
+		<property name="gain">
+			<value>10</value>
+		</property>
+	</object>
 </objects>
