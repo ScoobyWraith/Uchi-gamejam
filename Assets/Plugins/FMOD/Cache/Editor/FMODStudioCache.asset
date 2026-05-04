@@ -15,10 +15,10 @@ MonoBehaviour:
   Path: FMOD/OrigamiRunner/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639134948425175870
+  lastModified: 639134976971657308
   FileSizes:
   - Name: Desktop
-    Value: 190272
+    Value: 1015648
   Exists: 1
 --- !u!114 &-3256941333034737104
 MonoBehaviour:
@@ -35,10 +35,10 @@ MonoBehaviour:
   Path: FMOD/OrigamiRunner/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639134948425175870
+  lastModified: 639134976971677796
   FileSizes:
   - Name: Desktop
-    Value: 760
+    Value: 894
   Exists: 1
 --- !u!114 &-2960346100840352602
 MonoBehaviour:
@@ -66,7 +66,34 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 17454
+  Length: 52363
+--- !u!114 &-2822950523328879767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/click
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/click
+  Guid:
+    Data1: 497763754
+    Data2: 1285657642
+    Data3: -302507879
+    Data4: 600023036
+  Banks:
+  - {fileID: -7943835318209441344}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 490
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,10 +111,67 @@ MonoBehaviour:
   - {fileID: -7943835318209441344}
   EditorEvents:
   - {fileID: -2960346100840352602}
+  - {fileID: 4771634588126460277}
+  - {fileID: 45710266222638984}
+  - {fileID: -2822950523328879767}
   EditorParameters: []
   MasterBanks:
   - {fileID: -7943835318209441344}
   StringsBanks:
   - {fileID: -3256941333034737104}
-  cacheTime: 639134948425175870
+  cacheTime: 639134976971677796
   cacheVersion: 131605
+--- !u!114 &45710266222638984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/move
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/move
+  Guid:
+    Data1: 893982341
+    Data2: 1196042885
+    Data3: -1320260676
+    Data4: -1865096152
+  Banks:
+  - {fileID: -7943835318209441344}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 600
+--- !u!114 &4771634588126460277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/die
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/die
+  Guid:
+    Data1: -96834776
+    Data2: 1269292703
+    Data3: 1488765870
+    Data4: -1226573747
+  Banks:
+  - {fileID: -7943835318209441344}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 800
