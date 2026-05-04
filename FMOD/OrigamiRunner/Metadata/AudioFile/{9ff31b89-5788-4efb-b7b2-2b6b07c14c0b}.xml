@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{837503ac-9128-455e-ac5e-7a82fc0dbce1}">
+	<object class="AudioFile" id="{9ff31b89-5788-4efb-b7b2-2b6b07c14c0b}">
 		<property name="assetPath">
-			<value>music/music1.wav</value>
-		</property>
-		<property name="isStreaming">
-			<value>true</value>
+			<value>sfx/click.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
@@ -14,7 +11,7 @@
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>17.454557823129253</value>
+			<value>1.090907029478458</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{b05c3170-d7b1-4e1a-a65d-9cbb3e6b9877}</destination>
