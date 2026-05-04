@@ -26,6 +26,8 @@ public class GameJump : MonoBehaviour
     private Vector3 originalBackgroundPosition;
     private List<GameObject> enemies = new List<GameObject>();
     private List<GameObject> originalEnemies = new List<GameObject>();
+    private List<Transform> originalEnemiesDownPoint = new List<Transform>();
+    private List<SpriteRenderer> originalEnemiesSprites = new List<SpriteRenderer>();
     private List<GameObject> platforms = new List<GameObject>();
     private GameObject originalPlatform;
     private Vector3 platformBounds;
@@ -281,8 +283,26 @@ public class GameJump : MonoBehaviour
                 GameObject child = parent.GetChild(i).gameObject;
                 child.SetActive(false);
                 originalEnemies.Add(child);
+
+                originalEnemiesSprites.Add(child.GetComponent<SpriteRenderer>());
+                originalEnemiesDownPoint.Add(getLastChild(child.transform.GetChild(0)));
             }
         }
+    }
+
+    private Transform getLastChild(Transform firstChild)
+    {
+        if (firstChild == null)
+        {
+            return null;
+        }
+
+        while (firstChild.childCount > 0)
+        {
+            firstChild = firstChild.GetChild(0);
+        }
+
+        return firstChild;
     }
 
     private void LoadPlayer()
@@ -478,15 +498,26 @@ public class GameJump : MonoBehaviour
                 {
                     while(curXForBreaks < endForBreak)
                     {
-                        GameObject originalBreak = originalEnemies[rnd.Next(originalEnemies.Count)];
+                        int rndindex = rnd.Next(originalEnemies.Count);
+                        GameObject originalBreak = originalEnemies[rndindex];
                         GameObject newBreak = Instantiate(originalBreak, originalBreak.transform.parent);
                         newBreak.gameObject.SetActive(true);
 
-                        SpriteRenderer spriteRenderer = newBreak.GetComponent<SpriteRenderer>();
+                        SpriteRenderer spriteRenderer = originalEnemiesSprites[rndindex];
                         Vector3 sizes = spriteRenderer.bounds.size;
 
                         float cX = curXForBreaks + sizes.x / 2;
-                        float cY = mainY + sizes.y / 2 * 0.7f;
+                        float cY = mainY + sizes.y / 2;
+
+                        if (originalEnemiesDownPoint[rndindex] != null)
+                        {
+                            float scaleY = newBreak.transform.localScale.y;
+                            float deltaSize = -originalEnemiesDownPoint[rndindex].localPosition.y * scaleY;
+                            float deltaY = deltaSize - sizes.y / 2;
+
+                            cY -= deltaY;
+                        }
+
                         newBreak.transform.localPosition = new Vector3(cX, cY, 0);
                         enemies.Add(newBreak);
 

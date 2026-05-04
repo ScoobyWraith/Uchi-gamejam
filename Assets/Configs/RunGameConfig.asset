@@ -32,13 +32,13 @@ MonoBehaviour:
           inWeight: 0
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 1
-          value: 0.41160583
-          inSlope: -0.5159185
-          outSlope: -0.5159185
+          time: 0.99176025
+          value: 0.6077423
+          inSlope: -0.35578445
+          outSlope: -0.35578445
           tangentMode: 0
           weightedMode: 3
-          inWeight: 0.33333334
+          inWeight: 0.34407994
           outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -56,8 +56,8 @@ MonoBehaviour:
           inWeight: 0
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 1
-          value: 1
+          time: 1.000021
+          value: 1.3768045
           inSlope: -0.7418191
           outSlope: -0.7418191
           tangentMode: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
       backName: 2
       playerName: whale
       enemiesName: pool-shark
+      endLevelObjectName: flag
   - progress: 11
     settings:
       lives: 3
@@ -117,8 +118,8 @@ MonoBehaviour:
           inWeight: 0
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 1
-          value: 0.41160583
+          time: 0.99383545
+          value: 0.6021271
           inSlope: -0.5159185
           outSlope: -0.5159185
           tangentMode: 0
@@ -141,8 +142,8 @@ MonoBehaviour:
           inWeight: 0
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 1
-          value: 1
+          time: 0.9958496
+          value: 1.4075623
           inSlope: -0.7418191
           outSlope: -0.7418191
           tangentMode: 0
@@ -183,6 +184,7 @@ MonoBehaviour:
       backName: 4
       playerName: eagle
       enemiesName: pool-bat
+      endLevelObjectName: flag
   - progress: 17
     settings:
       lives: 4
@@ -195,17 +197,17 @@ MonoBehaviour:
         - serializedVersion: 3
           time: 0
           value: 1
-          inSlope: -0.5509659
-          outSlope: -0.5509659
+          inSlope: -0.39192075
+          outSlope: -0.39192075
           tangentMode: 34
           weightedMode: 0
           inWeight: 0
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 1.0679321
-          value: 0.41160583
-          inSlope: -0.5509659
-          outSlope: -0.5509659
+          time: 1.0723383
+          value: 0.57972836
+          inSlope: -0.39192075
+          outSlope: -0.39192075
           tangentMode: 34
           weightedMode: 0
           inWeight: 0.33333334
@@ -219,17 +221,17 @@ MonoBehaviour:
         - serializedVersion: 3
           time: -0.80702186
           value: 3.4222827
-          inSlope: -1.3404833
-          outSlope: -1.3404833
+          inSlope: -1.2105688
+          outSlope: -1.2105688
           tangentMode: 34
           weightedMode: 0
           inWeight: 0
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: -1.3404833
-          outSlope: -1.3404833
+          time: 0.9906616
+          value: 1.2460632
+          inSlope: -1.2105688
+          outSlope: -1.2105688
           tangentMode: 34
           weightedMode: 0
           inWeight: 0.33333334
@@ -268,3 +270,4 @@ MonoBehaviour:
       backName: 6
       playerName: butterfly
       enemiesName: pool-stones
+      endLevelObjectName: flag

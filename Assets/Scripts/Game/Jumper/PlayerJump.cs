@@ -86,6 +86,7 @@ public class PlayerJump : MonoBehaviour
 
         if (!isRun)
         {
+            SetRunning(0);
             return;
         }
 
