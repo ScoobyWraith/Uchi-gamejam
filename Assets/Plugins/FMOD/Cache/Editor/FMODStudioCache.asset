@@ -15,10 +15,10 @@ MonoBehaviour:
   Path: FMOD/OrigamiRunner/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639134980276332480
+  lastModified: 639135154869620522
   FileSizes:
   - Name: Desktop
-    Value: 1016288
+    Value: 1875264
   Exists: 1
 --- !u!114 &-3256941333034737104
 MonoBehaviour:
@@ -35,7 +35,7 @@ MonoBehaviour:
   Path: FMOD/OrigamiRunner/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639134980276353831
+  lastModified: 639135144579963518
   FileSizes:
   - Name: Desktop
     Value: 948
@@ -67,7 +67,7 @@ MonoBehaviour:
   - {fileID: 8946775638448329509}
   MinDistance: 1
   MaxDistance: 20
-  Length: 70000
+  Length: 86181
 --- !u!114 &-2822950523328879767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,7 +120,7 @@ MonoBehaviour:
   - {fileID: -7943835318209441344}
   StringsBanks:
   - {fileID: -3256941333034737104}
-  cacheTime: 639134980276353831
+  cacheTime: 639135154869620522
   cacheVersion: 131605
 --- !u!114 &45710266222638984
 MonoBehaviour:

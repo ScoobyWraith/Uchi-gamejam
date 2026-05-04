@@ -98,16 +98,22 @@ public class SliderCarousel : MonoBehaviour
         leftButton.onClick.AddListener(OnLeftClick);
         rightButton.onClick.AddListener(OnRightClick);
 
-        okButton.onClick.AddListener(() => onOkClick.Invoke());
+        okButton.onClick.AddListener(() => {
+            AudioManager.GetInstance().PlayClickSound();
+            
+            onOkClick.Invoke();
+        });
     }
     
     private void OnLeftClick()
     {
+        AudioManager.GetInstance().PlayClickSound();
         ToSlide(currentSlide - 1);
     }
 
     private void OnRightClick()
     {
+        AudioManager.GetInstance().PlayClickSound();
         ToSlide(currentSlide + 1);
     }
 

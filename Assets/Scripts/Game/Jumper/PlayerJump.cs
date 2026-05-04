@@ -129,6 +129,8 @@ public class PlayerJump : MonoBehaviour
 
     private void Jump()
     {
+        AudioManager.GetInstance().PlayMoveSound();
+        
         rb.velocity = new Vector2(rb.velocity.x, 0);
         rb.AddForce(Vector2.up * gameSettings.playerJump, ForceMode2D.Impulse);
     }

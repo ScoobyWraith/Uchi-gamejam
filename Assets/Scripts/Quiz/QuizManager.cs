@@ -28,11 +28,13 @@ public class QuizManager : MonoBehaviour
 
     public void ShowCorrectDialog()
     {
+        AudioManager.GetInstance().PlayClickSound();
         correctAnswerModal.OpenModal();
     }
 
     public void ShowUncorrectDialog()
     {
+        AudioManager.GetInstance().PlayClickSound();
         wrongAnswerModal.OpenModal();
     }
 

@@ -73,6 +73,7 @@ public class IslandButtonUIStates : MonoBehaviour, IPointerEnterHandler, IPointe
 
     public void onClick(int islandNumber)
     {
+        AudioManager.GetInstance().PlayClickSound();
         LevelsLoader levelsLoader = LevelsLoader.GetInstance();
         levelsLoader.LoadIsland(islandNumber);
     }

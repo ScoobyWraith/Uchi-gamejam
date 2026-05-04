@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private string damageBool = "damage";
     private string runSpeedName = "MovingSpeed";
     private Action onHit;
+    private bool isOnMoving = false;
 
     void Start()
     {
@@ -49,6 +50,7 @@ public class Player : MonoBehaviour
         distance = 0;
         undeathPeriod = -1;
         SetMoving(1);
+        isOnMoving = false;
     }
 
     public void StopPlayer()
@@ -56,6 +58,7 @@ public class Player : MonoBehaviour
         isRun = false;
         UndeathOff();
         SetMoving(0);
+        isOnMoving = false;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -87,6 +90,8 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
+            
+            
             goalPosition = Mathf.Clamp(goalPosition - 1, 0, positions.Count - 1);
         }
 
@@ -103,6 +108,7 @@ public class Player : MonoBehaviour
 
         if (distance == 0)
         {
+            isOnMoving = false;
             SetAnimationNoraml();
             return;
         }
@@ -110,6 +116,12 @@ public class Player : MonoBehaviour
         // вверх
         if (distance < 0)
         {
+            if (!isOnMoving)
+            {
+                isOnMoving = true;
+                AudioManager.GetInstance().PlayMoveSound();
+            }
+            
             SetAnimationUp();
             distance += deltaY;
 
@@ -128,6 +140,12 @@ public class Player : MonoBehaviour
         // вниз
         if (distance > 0)
         {
+            if (!isOnMoving)
+            {
+                isOnMoving = true;
+                AudioManager.GetInstance().PlayMoveSound();
+            }
+            
             SetAnimationDown();
             distance -= deltaY;
 

@@ -48,6 +48,8 @@ public class GameJump : MonoBehaviour
         mainCamera = Camera.main;
         
         StartCoroutine(Load());
+
+        AudioManager.GetInstance().PlayCoreMusic();
     }
 
     public void FixedUpdate()
@@ -544,6 +546,9 @@ public class GameJump : MonoBehaviour
     {
         GameObject live = lives[lives.Count - 1];
         lives.RemoveAt(lives.Count - 1);
+
+        AudioManager.GetInstance().PlayDieSound();
+
         Destroy(live);
 
         if (lives.Count == 0)

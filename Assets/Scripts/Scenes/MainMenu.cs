@@ -7,7 +7,9 @@ public class MainMenu : MonoBehaviour
     public LevelsLoader levelsLoader;
 
     public void PlayGame()
-    {
+    {       
+        AudioManager.GetInstance().PlayClickSound();
+        
         levelsLoader.LoadGameCoroutine();
         DestroyUI();
     }

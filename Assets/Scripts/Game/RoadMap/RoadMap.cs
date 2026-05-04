@@ -15,6 +15,8 @@ public class RoadMap : MonoBehaviour
     public void Start()
     {
         StartCoroutine(Load());
+
+        AudioManager.GetInstance().PlayMetaMusic();
     }
 
     private IEnumerator Load()

@@ -41,6 +41,8 @@ public class Game : MonoBehaviour
         mainCamera = Camera.main;
         
         StartCoroutine(Load());
+
+        AudioManager.GetInstance().PlayCoreMusic();
     }
 
     private IEnumerator Load()
@@ -408,6 +410,9 @@ public class Game : MonoBehaviour
     {
         GameObject live = lives[lives.Count - 1];
         lives.RemoveAt(lives.Count - 1);
+
+        AudioManager.GetInstance().PlayDieSound();
+
         Destroy(live);
 
         if (lives.Count == 0)
